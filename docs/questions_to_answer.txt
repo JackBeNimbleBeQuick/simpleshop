@@ -1,0 +1,12 @@
+
+
+Which file to use in working with to meet a specific need....
+
+How modify a class
+
+How do I research code base to implement a story?
+
+  -working with  the the impact analysis...
+  -come up with at least 2 to 3 different ways to accomplish the task
+  -review your plan with a colleague
+  -do initial proof of concept

@@ -1,0 +1,135 @@
+/*ELEMENTS*/
+body{
+  background: #fafafa;
+  font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
+  color: #333;
+  font-size: 18px;
+}
+span,p{
+  &.left{
+    width: 66%
+  }
+  &.right{
+    float: right;
+    text-align: right;
+    width: 33%
+  }
+}
+p + .right{
+  position: absolute;
+  right: 18px;
+  top: 18px;
+}
+
+blockquote{
+  margin: 1em!important;
+  span{
+    font-size: $large-size;
+    line-height: .85;
+    quotes: initial;
+    &:before{
+      content: open-quote;
+      @include quote();
+    }
+    &:after{
+      content: close-quote;
+      @include quote();
+    }
+  }
+}
+/*DIRECTIVES CASES*/
+.align-right{
+  text-align: right;
+}
+.align-left{
+  text-align: left;
+}
+/*BLOCKS CASES*/
+.blocks{
+  margin: 18px;
+  .block{
+    font-weight: $light-font;
+    padding: 14px 18px;
+    position: relative;
+    &.grey{
+      background-color: $grey_block_color;
+      color: $white;
+    }
+    &.white{
+      background-color: $white-smoke;
+      color: $black;
+    }
+    &.black{
+      background-color: $black_block_color;
+      color: $light-grey;
+    }
+    &.grid{
+      padding: 10px;
+      .left,.right{
+        width: 50%;
+        > div{
+          padding: 10px 0;
+          &:first-child{
+            border-bottom: 1px solid $light-grey;
+          }
+        }
+      }
+      .right{
+        padding: 10px;
+        position: absolute;
+        right: 0;
+        text-align: right;
+        top: 0;
+      }
+    }
+  }
+}
+.disclosure-block{
+  p{
+
+  }
+}
+/*NAME SPACES*/
+.transactions{
+  .blocks{
+    margin: 18px;
+  }
+}
+
+.article{
+  padding: 18px;
+  h2{
+    font-size: $large-size;
+    padding: .25em 0;
+  }
+  p{
+    font-size: $normal-font;
+  }
+}
+
+/*TRANSFORMS*/
+.arrow-box {
+	position: relative;
+	border-right: 1px solid $light-grey;
+  &:before,&:after{
+  	left: 100%;
+  	top: 50%;
+  	border: solid transparent;
+  	content: " ";
+  	height: 0;
+  	width: 0;
+  	position: absolute;
+  	pointer-events: none;
+    z-index: 10000;
+  }
+  &:before{
+  	border-left-color: $light-grey;
+  	border-width: 15px;
+  	margin-top: -15px;
+  }
+  &:after{
+  	border-left-color: $white-smoke;
+  	border-width: 12px;
+  	margin-top: -12px;
+  }
+}
