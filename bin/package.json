@@ -1,25 +1,35 @@
 {
-  "name": "SASS_qs_forthelazy",
-  "author": "Jack Harrison",
-  "url": "DaisyRanch.org",
+  "name": "sass_qs_forthelazy",
   "version": "0.0.1",
-  "repository": "https://github.com/JackBeNimbleBeQuick/sass_qs_forthelazy.git",
-  "description": "Implementation of \"How do I do stuff\"",
-  "license": "Don't Do Bad Stuff",
-  "dependencies": {
-  },
+  "description": "A quick start for SASS that includes a basic setup that should work for all most all projects",
+  "main": "gulpfile.js",
+  "dependencies": {},
   "devDependencies": {
-    "fs": "0.0.1-security",
-    "graceful-fs": "^4.1.11",
-    "node-sass": "^4.5.0",
-    "sass": "^0.5.0",
-    "cli": "^1.0.1",
+    "glob": "^7.1.1",
     "gulp": "^3.9.1",
-    "gulp-cli": "^1.2.2",
     "gulp-concat": "^2.6.1",
     "gulp-jshint": "^2.0.4",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^2.0.1"
-  }
+    "gulp-uglify": "^2.1.0",
+    "jasmine": "^2.5.3",
+    "jshint": "^2.9.4"
+  },
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JackBeNimbleBeQuick/sass_qs_forthelazy.git"
+  },
+  "keywords": [
+    "SASS",
+    "Quick",
+    "Start",
+    "Kit"
+  ],
+  "author": "Jack Harrison",
+  "license": "CC-BY-4.0",
+  "bugs": {
+    "url": "https://github.com/JackBeNimbleBeQuick/sass_qs_forthelazy/issues"
+  },
+  "homepage": "https://github.com/JackBeNimbleBeQuick/sass_qs_forthelazy#readme"
 }
