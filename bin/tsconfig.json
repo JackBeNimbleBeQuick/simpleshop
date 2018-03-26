@@ -9,7 +9,6 @@
     "allowJs": true,
     "sourceMap": true
   },
-  "compileOnSave": false,
   "files" : [
     "ts/app.ts",
   ],

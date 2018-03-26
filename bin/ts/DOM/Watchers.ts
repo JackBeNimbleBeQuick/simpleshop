@@ -14,9 +14,11 @@ export class DOMWatchers{
         let el    = <HTMLElement>text[index];
         let child = <HTMLElement>el.firstElementChild;
         let parent= <HTMLElement>el.parentNode;
-        console.log(el);
-        console.log(child);
-        console.log(parent);
+        if(child && parent){
+          console.log(el);
+          console.log(child);
+          console.log(parent);
+        }
       }
     });
   }
