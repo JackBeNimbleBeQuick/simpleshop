@@ -18,19 +18,16 @@ partials: the components of the project definitions
 
 vars: consists of the variables to be used through out the project and the mixins that can be used for consistent use of more complex definitions.
 
-main.scss
-
-vars
-  var.scss
-  mixes.scss
-
-partials
+####SASS files
   main.scss
+  vars
+  -_var.scss
+  -_mixes.scss
+  partials
+  -_main.scss
 
-### Explore
-explore the basic structure of things
-```
-.package.json: has the base packages needed to run sass and some other basic stuff
-```
-.gulpfile.js: sets up the gulp tasks...
-```
+#Command lines
+
+  .gulp sass
+  .tsc
+  .webpack
