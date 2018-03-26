@@ -2,6 +2,7 @@
 <html>
   <head>
     <link href="css/main.css" media="screen" rel="stylesheet" type="text/css">
+    <script src="js/index.js"></script>
   </head>
   <body>
   <div class="container">
@@ -12,7 +13,9 @@
               Account Name
             </span>
             <span class="right">
-              $10.25
+              <svg viewBox="0 0 200 40">
+                <text y="50%" x="100%" text-anchor="end">$8,200,250,412,333.25</text>
+              </svg>
             </span>
         </div>
         <div class="block grey">
@@ -20,7 +23,9 @@
               Something a bit longer in length with more description
             </p>
             <span class="right">
-              $1,250.25
+              <svg viewBox="0 0 200 40">
+                <text y="50%" x="100%" text-anchor="end">$1,250.25</text>
+              </svg>
             </span>
         </div>
         <div class="block white grid">
@@ -74,5 +79,12 @@
       </div>
     </div>
   </div>
+  <script type="text/javascript">
+      document.addEventListener('DOMContentLoaded', function(event){
+        console.log(event);
+        // let dom = new DOMWatchers();
+        // dom.resizeText('span.right span');
+      });
+  </script>
   </body>
 </html>

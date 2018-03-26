@@ -2,7 +2,7 @@
   "name": "sass_qs_forthelazy",
   "version": "0.0.1",
   "description": "A quick start for SASS that includes a basic setup that should work for all most all projects",
-  "main": "gulpfile.js",
+  "main": "js/app.js",
   "dependencies": {},
   "devDependencies": {
     "glob": "^7.1.1",
@@ -11,9 +11,14 @@
     "gulp-jshint": "^2.0.4",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^3.1.0",
-    "gulp-uglify": "^2.1.0",
-    "jasmine": "^2.5.3",
-    "jshint": "^2.9.4"
+    "gulp-uglify": "^3.0.0",
+    "jasmine": "^3.1.0",
+    "jshint": "^2.9.4",
+    "path": "^0.12.7",
+    "ts-loader": "^4.1.0",
+    "typescript": "^2.7.2",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.13"
   },
   "scripts": {},
   "repository": {

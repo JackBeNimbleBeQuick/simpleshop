@@ -12,13 +12,19 @@ span,p{
   &.right{
     float: right;
     text-align: right;
-    width: 33%
+    width: 33%;
+    svg{
+    }
   }
 }
 p + .right{
+  font-size: 100%;
   position: absolute;
   right: 18px;
   top: 18px;
+  span{
+    font-size: 1em;
+  }
 }
 
 blockquote{
@@ -54,6 +60,9 @@ blockquote{
     &.grey{
       background-color: $grey_block_color;
       color: $white;
+      text{
+        fill: $white;
+      }
     }
     &.white{
       background-color: $white-smoke;
@@ -61,7 +70,10 @@ blockquote{
     }
     &.black{
       background-color: $black_block_color;
-      color: $light-grey;
+      color: $white;
+      text{
+        fill: $white;
+      }
     }
     &.grid{
       padding: 10px;
