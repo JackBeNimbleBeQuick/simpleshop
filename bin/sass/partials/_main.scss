@@ -3,9 +3,9 @@ body{
   background: #fafafa;
   font-family: ‘Lucida Sans Unicode’, ‘Lucida Grande’, sans-serif;
   color: #333;
-  font-size: 18px;
+  font-size: 1em;
 }
-span,p{
+span,p,div{
   &.left{
     width: 66%
   }
@@ -16,12 +16,15 @@ span,p{
     svg{
     }
   }
+  &.small{
+   font-size: 50%;
+  }
 }
 p + .right{
   font-size: 100%;
   position: absolute;
-  right: 18px;
-  top: 18px;
+  right: 1em;
+  top: 1em;
   span{
     font-size: 1em;
   }
@@ -50,12 +53,31 @@ blockquote{
 .align-left{
   text-align: left;
 }
+.no-break{
+  white-space: nowrap;
+}
+.pad-10px{
+  //I really do not like overrides that can break inheritance
+  //unless your really do need to break inheritance  8^)
+  padding: 10px!important;
+}
+/*HEADINGS CASES*/
+.container{
+  .heading{
+    padding: 1.2em 1em 0;
+  }
+  .blocks{
+    .heading{
+
+    }
+  }
+}
 /*BLOCKS CASES*/
 .blocks{
-  margin: 18px;
+  margin: 1em;
   .block{
     font-weight: $light-font;
-    padding: 14px 18px;
+    padding: 14px 1em;
     position: relative;
     &.grey{
       background-color: $grey_block_color;
@@ -76,7 +98,7 @@ blockquote{
       }
     }
     &.grid{
-      padding: 10px;
+      padding: 3%;
       .left,.right{
         width: 50%;
         > div{
@@ -102,14 +124,27 @@ blockquote{
   }
 }
 /*NAME SPACES*/
+.status-box{
+  background-color: $white-smoke;
+  border: 1px solid $light-grey;
+  border-radius: 0.25em;
+  opacity: 0;
+  padding: 0.15em;
+  position: absolute;
+  right: 2pt;
+  transition: 2s ease-in-out;
+  top: 2pt;
+  @include shadow(0.25em);
+  z-index: 100;
+}
 .transactions{
   .blocks{
-    margin: 18px;
+    margin: 1em;
   }
 }
 
 .article{
-  padding: 18px;
+  padding: 1em;
   h2{
     font-size: $large-size;
     padding: .25em 0;

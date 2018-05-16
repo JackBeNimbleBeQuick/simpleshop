@@ -3,7 +3,7 @@
     "module": "es6",
     "target": "es5",
     "preserveConstEnums": true,
-    "outDir": "js/",
+    "outDir": "build/",
     "baseUrl": "",
     "watch": false,
     "allowJs": true,
@@ -13,7 +13,7 @@
     "ts/app.ts",
   ],
   "filesGlob":[
-    "/**/*.ts"
+    "**/*.ts"
   ],
   "lib":[
     "es6",

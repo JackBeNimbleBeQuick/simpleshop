@@ -1,14 +1,15 @@
-const path = require('path');
+const path    = require('path');
+const webpack = require('webpack');
 
 module.exports = {
-  entry: './ts/app.ts',
+  entry: './js/app.js',
   mode: 'development',
   watch: false,
   module: {
     rules: [
       {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
+        test: /\.js?$/,
+        use: 'script-loader',
         exclude: '/node_modules/'
       }
     ]
@@ -17,7 +18,8 @@ module.exports = {
     extensions: [ '.tsx','.ts','.js' ],
   },
   output: {
-    filename: 'index.js',
+    devtoolLineToLine: true,
+    filename: 'app.js',
     path: path.resolve(__dirname, '../public/js')
   }
 };
