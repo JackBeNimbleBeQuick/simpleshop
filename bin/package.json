@@ -1,7 +1,7 @@
 {
   "name": "sass_qs_forthelazy",
   "version": "0.0.1",
-  "description": "A quick start for SASS that includes a basic setup that should work for all most all projects",
+  "description": "Kickstarter for responsive, typescript based setup with webpack delivery",
   "main": "js/app.js",
   "dependencies": {},
   "devDependencies": {
@@ -36,8 +36,10 @@
     "url": "git+https://github.com/JackBeNimbleBeQuick/sass_qs_forthelazy.git"
   },
   "keywords": [
-    "SASS",
+    "SASS Quick Kick Start",
+    "Typescript Qucik Kick Start",
     "Quick",
+    "Kick",
     "Start",
     "Kit"
   ],
