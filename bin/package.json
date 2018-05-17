@@ -10,6 +10,7 @@
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
+    "hoek": "^4.2.1",
     "glob": "^7.1.2",
     "gulp": "github:gulpjs/gulp#4.0",
     "gulp-concat": "^2.6.1",
