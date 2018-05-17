@@ -5,17 +5,17 @@
   - gulp 4 still has babel dependencies: I will be exploring whether this can be replaced with typescript as I find that to be cleaner
 * typescript implementaion:  
   - this provides very bare bones setup for lib that does nothing much
-* webpack:  is included it works in gulp tasks: the base webpack.config needs work
+* webpack:  is included and it works in gulp tasks: the base webpack.config needs work
 
 ## Getting Started
 - Follow gulp4 setup: [Gulp 4 setup may change](https://www.npmjs.com/package/gulp4)
 - may I suggest Node Version Management [npm nvm](https://github.com/creationix/nvm) | [npm nvm-windows](https://github.com/coreybutler/nvm-windows) if you have not done so yet
 - install and setup typescript [ts](https://www.npmjs.com/package/typescript)
-- run all tasks within cd bin/
+- run all tasks within bin/
 
 ...
 mkdir myWebProject
-cd myWebProject
+cd myWebProject/bin
 npm install
 
 
@@ -23,7 +23,7 @@ npm install
 To provide the basics for:
 - Sass
 - typescript
-- webpack * (see above though)
+- webpack (* Known Issues below)
 
 . Sass provides a basic grid, variables, and mix-ins
 . Typescript is just the setup for getting started
@@ -42,7 +42,8 @@ To provide the basics for:
   - gulp js (transcribes ts to js and moves result to public/js)  
 
 #Known Issues and Future
-  - Gulp-sass has known security dependencies: exploring use of npm-sas or other options that do not insert these dependencies
+  - npm audit discoveries are now being worked through.
+    - Gulp-sass has known security dependencies: exploring use of npm-sas or other options that do not insert these dependencies
   - exploring removal of babel dependencies for implementing a cleaner es6+ implementation
   - Make the installation work both for tsc and webpack at the command line. The first iteration was providing a new gulp implementation the following will be next
     - Current webpack.config.js has issues that are being worked on..
