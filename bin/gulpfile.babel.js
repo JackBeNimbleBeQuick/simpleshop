@@ -10,9 +10,10 @@ import rename  from 'gulp-rename';
 import ts      from "gulp-typescript";
 
 // Include useful stuff
-import glob     from 'glob';
-import path     from 'path';
-import sh       from 'shelljs';
+import glob    from 'glob';
+import path    from 'path';
+import fs      from "fs";
+import sh      from 'shelljs';
 
 import webpack from 'webpack-stream';
 
@@ -23,7 +24,25 @@ let sources = {
   styles:  `sass/**/*.scss`,
   scripts: `ts/**/*.ts`
 };
-// console.log(tsProject());
+
+let cleanup =  [
+  'js'
+]
+
+
+/**
+ * Put away the toys and sweep the flo
+ * @param  {Function} done
+ * @return done()
+ */
+let clean = (done) => {
+  for(let i in cleanup){
+    let _path = __dirname+'/'+cleanup[i];
+    sh.rm('-rf', _path);
+  }
+  return done();
+}
+
 
 /**
  * Create / Overwrite public/css/main.css
@@ -63,17 +82,29 @@ let transpile = (done) => {
 }
 
 
+/**
+ * Series of js tasks that result in new webpack build
+ * in public/js
+ * @param  {Function} done
+ * @return done()
+ */
 let js = (done) => {
-  return gulp.series([transpile, moveJs])(done);
+  return gulp.series([transpile, moveJs, clean])(done);
 }
 
+/**
+ * Does full build
+ * @param  {Function} done
+ * @return done()
+ */
 let build = (done) => {
-  return gulp.series([transpile, css, moveJs])(done);
+  return gulp.series([transpile, css, moveJs, clean])(done);
 }
 
 export {
   js,
   css,
   moveJs,
-  build
+  build,
+  clean,
 }
