@@ -36,12 +36,12 @@ To provide the basics for:
 - _vars/\_var:\_ hold the grid setup, you may want to clean this to support your color theming scheme
 - _vars/\_mixes:\_ some sample mix-ins are provided
 
-###Command lines
+### Command lines
   - tsc (if you set up typescript global)
   - gulp css (generates and drops css into public/css)
   - gulp js (transcribes ts to js and moves result to public/js)  
 
-###Known Issues and Future
+### Known Issues and Future
   - npm audit discoveries are now being worked through.
     - Gulp-sass has known security dependencies: exploring use of npm-sas or other options that do not insert these dependencies
   - exploring removal of babel dependencies for implementing a cleaner es6+ implementation
