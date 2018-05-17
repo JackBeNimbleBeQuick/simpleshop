@@ -1,0 +1,5 @@
+Standard clone and npm install
+
+#This assume a file structure where all Typescript and Sass files reside in a /bin directory
+#Interim build steps go to /build
+#Final outputs go to ../public which assumes a standard single point of entry for an MVC web Application
