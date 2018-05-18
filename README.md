@@ -14,9 +14,10 @@
 - run all tasks within bin/
 
 ...
-mkdir myWebProject
-cd myWebProject/bin
-npm install
+- mkdir myWebProject
+- git clone ...this_url_may_change.git
+- cd into_name_of_this_thing/bin
+- npm install
 
 ### Goals
 To provide the basics for:
