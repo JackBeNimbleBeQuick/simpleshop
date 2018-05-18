@@ -29,9 +29,8 @@ let cleanup =  [
   'js'
 ]
 
-
 /**
- * Put away the toys and sweep the flo
+ * Put away the toys and sweep the floor
  * @param  {Function} done
  * @return done()
  */
@@ -43,7 +42,6 @@ let clean = (done) => {
   return done();
 }
 
-
 /**
  * Create / Overwrite public/css/main.css
  * @return {Void} results in compiled files place into public foler
@@ -52,11 +50,11 @@ let css = () => gulp.src('sass/**/*.scss')
   .pipe(sass())
   .pipe(gulp.dest('../public/css'));
 
-  /**
-   * Webpack and move transpiled files to public
-   * @param  {Function} fn just the gulp env function in case you need to return it 8^) ?
-   * @return {Gulp} task
-   */
+/**
+ * Webpack and move transpiled files to public
+ * @param  {Function} fn just the gulp env function in case you need to return it 8^) ?
+ * @return {Gulp} task
+ */
 let moveJs = (done) => {
   console.log('Moving transpiled js to public');
   return gulp.src('js/**/*.js')
@@ -65,7 +63,6 @@ let moveJs = (done) => {
         filename: 'app.js'
       }
     })).pipe(gulp.dest('../public/js'));
-
 }
 
 /**
@@ -77,10 +74,8 @@ let transpile = (done) => {
   console.log('Transpiling ts to js using tsconfig.json');
 
   let result = gulp.src('ts/**/*.ts').pipe(tsProject());
-  return result.js
-    .pipe(gulp.dest('js'));
+  return result.js.pipe(gulp.dest('js'));
 }
-
 
 /**
  * Series of js tasks that result in new webpack build

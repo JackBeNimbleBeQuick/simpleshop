@@ -1,9 +1,9 @@
 # Project Title
-> CSS Basics for SASS and Typescript
-* gulp 4: to lean forward and embrace the new
+> Typescript, SASS, Webpack kick starter, providing the TUC pattern
+* gulp 4: we might as well start using this stuff now ... right?
   - requires some gulp 4 environmental stuff which may change soon ( gulp 4 is still in Alpha so keep you eyes open 8^)
-  - gulp 4 still has babel dependencies: I will be exploring whether this can be replaced with typescript as I find that to be cleaner
-* typescript implementaion:  
+  - gulp 4 es6 still has babel dependencies: I will be exploring whether this can be replaced with typescript as I find that to be cleaner
+* typescript implementation:  
   - this provides very bare bones setup for lib that does nothing much
 * webpack:  is included and it works in gulp tasks: the base webpack.config needs work
 
@@ -17,7 +17,6 @@
 mkdir myWebProject
 cd myWebProject/bin
 npm install
-
 
 ### Goals
 To provide the basics for:
@@ -48,3 +47,6 @@ To provide the basics for:
   - Make the installation work both for tsc and webpack at the command line. The first iteration was providing a new gulp implementation the following will be next
     - Current webpack.config.js has issues that are being worked on..
     - Current tsconfig.json still needs a round of proofing
+
+#### Thanks for playing, do not forget your bobble heads as you head for the gates
+  - It does amaze me that even in a little ditty such as this ... how much node from all sorts of mostly unknown sources gets inserted to the mix... 8^) breath deep and enjoy the view... and do not step on the snakes.... they really for some reason do not like that...
