@@ -55,5 +55,5 @@ To provide the basics for:
   - exploring removal of babel dependencies for implementing a cleaner es6+ implementation
 
 
-#### Thanks for playing, do not forget your bobble heads as you head for the gates
+#### Thanks for coming to the game, do not forget your bobble heads as you head for the gates
   - It does amaze me that even in a little ditty such as this ... how much node from all sorts of mostly unknown sources gets inserted to the mix... 8^) breath deep and enjoy the view... and do not step on the snakes.... they really for some reason do not like that...
