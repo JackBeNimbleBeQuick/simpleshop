@@ -8,6 +8,7 @@ import concat  from 'gulp-concat';
 import uglify  from 'gulp-uglify';
 import rename  from 'gulp-rename';
 import ts      from "gulp-typescript";
+import maps    from 'gulp-sourcemaps';
 
 // Include useful stuff
 import glob    from 'glob';
@@ -72,9 +73,14 @@ let moveJs = (done) => {
  */
 let transpile = (done) => {
   console.log('Transpiling ts to js using tsconfig.json');
+  let result = gulp
+    .src(sources.scripts)
+    .pipe(maps.init())
+    .pipe(tsProject());
 
-  let result = gulp.src('ts/**/*.ts').pipe(tsProject());
-  return result.js.pipe(gulp.dest('js'));
+  return result.js
+    .pipe(maps.write())
+    .pipe(gulp.dest('js'));
 }
 
 /**
@@ -100,6 +106,7 @@ export {
   js,
   css,
   moveJs,
+  transpile,
   build,
   clean,
 }
