@@ -3,7 +3,7 @@
 * gulp 4: we might as well start using this stuff now ... right?
   - requires some gulp 4 environmental stuff which may change soon ( gulp 4 is still in Alpha so keep you eyes open 8^)
   - gulp 4 es6 still has babel dependencies: I will be exploring whether this can be replaced with typescript as I find that to be cleaner
-  
+
 * responsive sass build that supports custom grid settings
 * typescript implementation:  
   - this provides very bare bones setup for lib that does nothing much
@@ -25,12 +25,11 @@
 ### Goals
 To provide the basics for:
 - sass
+  - sass provides a basic grid, variables, and mix-ins
 - typescript
+  - typescript is just the setup for getting started
 - webpack
-
-. sass provides a basic grid, variables, and mix-ins
-. typescript is just the setup for getting started
-. webpak provide a typescript to js rule
+  - webpak provide a typescript to js rule
 
 ### Sass Files
 - _main.scss:_ gathers the files used in compiling and provides the basic grid setup
@@ -47,10 +46,10 @@ To provide the basics for:
 ### Known Issues and Future
   - npm audit discoveries are now being worked through.
     - gulp-sass has known security dependencies:
-      - [stringstream](https://nodesecurity.io/advisories/664)
-      - [hoek](https://nodesecurity.io/advisories/566)
-      - [tunnel-agent](https://nodesecurity.io/advisories/598)
-      - [lodah](https://nodesecurity.io/advisories/577)
+      - [stringstream](https://nodesecurity.io/advisories/664){:target:"\_blank"}
+      - [hoek](https://nodesecurity.io/advisories/566){:target:"\_blank"}
+      - [tunnel-agent](https://nodesecurity.io/advisories/598){:target:"\_blank"}
+      - [lodah](https://nodesecurity.io/advisories/577){:target:"\_blank"}
   - exploring removal of babel dependencies for implementing a cleaner es6+ implementation
 
 
