@@ -1,5 +1,5 @@
 {
-  "name": "sass_qs_forthelazy",
+  "name": "tsResponsivePackKickstart",
   "version": "0.0.1",
   "description": "Kickstarter for responsive, typescript based setup with webpack delivery",
   "main": "js/app.js",
@@ -37,7 +37,7 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JackBeNimbleBeQuick/sass_qs_forthelazy.git"
+    "url": "git+https://github.com/JackBeNimbleBeQuick/tsResponsivePackKickstart.git"
   },
   "keywords": [
     "SASS Quick Kick Start",
@@ -50,7 +50,7 @@
   "author": "Jack Harrison",
   "license": "CC-BY-4.0",
   "bugs": {
-    "url": "https://github.com/JackBeNimbleBeQuick/sass_qs_forthelazy/issues"
+    "url": "https://github.com/JackBeNimbleBeQuick/tsResponsivePackKickstart/issues"
   },
-  "homepage": "https://github.com/JackBeNimbleBeQuick/sass_qs_forthelazy#readme"
+  "homepage": "https://github.com/JackBeNimbleBeQuick/tsResponsivePackKickstart#readme"
 }
