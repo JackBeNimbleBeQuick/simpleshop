@@ -10,11 +10,11 @@
 * webpack:  
 
 ## Getting Started
-- Follow gulp4 setup: <a href="https://www.npmjs.com/package/gulp4" target="\_blank" >Gulp 4 setup may change</a>
-- may I suggest Node Version Management <a href="https://github.com/creationix/nvm" target="\_blank" >npm nvm</a> | <a href="https://github.com/coreybutler/nvm-windows" target="\_blank" >npm nvm-windows</a>
+- Follow gulp4 setup: <a href="https://www.npmjs.com/package/gulp4" target="_blank" >Gulp 4 setup may change</a>
+- may I suggest Node Version Management <a href="https://github.com/creationix/nvm" target="_blank" >npm nvm</a> | <a href="https://github.com/coreybutler/nvm-windows" target="_blank" >npm nvm-windows</a>
  if you have not done so yet
   - this package assembled with npm v8.9.4
-- install and setup typescript <a href="https://www.npmjs.com/package/typescript" target="\_blank" >ts</a>
+- install and setup typescript <a href="https://www.npmjs.com/package/typescript" target="_blank" >ts</a>
 - run all tasks within bin/
 
 ...
@@ -47,10 +47,10 @@ To provide the basics for:
 ### Known Issues and Future
   - npm audit discoveries are now being worked through.
     - gulp-sass has known security dependencies:
-      - <a href="https://nodesecurity.io/advisories/664" target="\_blank">stringstream</a>
-      - <a href="https://nodesecurity.io/advisories/566" target="\_blank">hoek</a>
-      - <a href="https://nodesecurity.io/advisories/598" target="\_blank">tunnel-agent</a>
-      - <a href="https://nodesecurity.io/advisories/577" target="\_blank">lodash</a>
+      - <a href="https://nodesecurity.io/advisories/664" target="_blank">stringstream</a>
+      - <a href="https://nodesecurity.io/advisories/566" target="_blank">hoek</a>
+      - <a href="https://nodesecurity.io/advisories/598" target="_blank">tunnel-agent</a>
+      - <a href="https://nodesecurity.io/advisories/577" target="_blank">lodash</a>
   - exploring removal of babel dependencies for implementing a cleaner es6+ implementation
 
 
