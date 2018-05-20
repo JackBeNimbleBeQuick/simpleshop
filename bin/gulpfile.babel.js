@@ -15,6 +15,10 @@ import glob    from 'glob';
 import path    from 'path';
 import fs      from "fs";
 import sh      from 'shelljs';
+import ps      from 'child_process';
+
+let exec = ps.exec;
+
 
 import webpack from 'webpack-stream';
 
@@ -25,6 +29,10 @@ let sources = {
   styles:  `sass/**/*.scss`,
   scripts: `ts/**/*.ts`
 };
+
+let targets = {
+  index: '../public/index.html'
+}
 
 let cleanup =  [
   'js'
@@ -84,6 +92,30 @@ let transpile = (done) => {
 }
 
 /**
+ * open into local browser => assumes the default browser is set to handle .html extensions
+
+ * @param  {Function}
+ * @return {Function}
+ */
+let open = (done) => {
+  let err = {};
+  if (process.platform == 'darwin') {
+    exec(('open '.concat(targets.index)), (err, stdout, stderr) => {
+        if (stdout != "") console.log(stdout);
+        if (stderr != "") console.log(stderr);
+        return done(err);
+    });
+  } else {
+    exec(('start '.concat(targets.index)), (err, stdout, stderr) => {
+        if (stdout != "") console.log(stdout);
+        if (stderr != "") console.log(stderr);
+        return done(err);
+    });
+  }
+
+}
+
+/**
  * Series of js tasks that result in new webpack build
  * in public/js
  * @param  {Function} done
@@ -94,12 +126,32 @@ let js = (done) => {
 }
 
 /**
+ * use js task and open in broser
+ * @param  {Function} done
+ * @return {Function}
+ */
+let runjs = (done) => {
+  return gulp.series([transpile, moveJs, open, clean])(done);
+
+}
+
+/**
+ * use js task and open in broser
+ * @param  {Function} done
+ * @return {Function}
+ */
+let runcss = (done) => {
+  return gulp.series([css, open])(done);
+
+}
+
+/**
  * Does full build
  * @param  {Function} done
  * @return done()
  */
 let build = (done) => {
-  return gulp.series([transpile, css, moveJs, clean])(done);
+  return gulp.series([transpile, css, moveJs, open, clean])(done);
 }
 
 export {
@@ -109,4 +161,7 @@ export {
   transpile,
   build,
   clean,
+  open,
+  runjs,
+  runcss,
 }
