@@ -49,7 +49,7 @@ To provide the basics for:
       - [stringstream](https://nodesecurity.io/advisories/664)
       - [hoek](https://nodesecurity.io/advisories/566)
       - [tunnel-agent](https://nodesecurity.io/advisories/598)
-      - [lodah](https://nodesecurity.io/advisories/577)
+      - [lodash](https://nodesecurity.io/advisories/577)
   - exploring removal of babel dependencies for implementing a cleaner es6+ implementation
 
 
