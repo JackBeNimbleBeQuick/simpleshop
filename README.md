@@ -43,7 +43,7 @@ To provide the basics for:
   - gulp css (generates and drops css into public/css)
   - gulp js (transcribes ts to js and moves result to public/js)  
   - gulp run (builds and attempts to open index in default browser)
-  - read gulpfile for other tasks, and attempt to provide as many ecrements of build are there)
+  - read gulpfile for other tasks
 
 ### Known Issues and Future
   - npm audit discoveries are now being worked through.
