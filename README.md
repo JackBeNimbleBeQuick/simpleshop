@@ -39,10 +39,14 @@ To provide the basics for:
 - _vars/\_mixes:\_ some sample mix-ins are provided
 
 ### Command lines
-  - tsc         (if you set up typescript global)
-  - gulp css    (generates and drops css into public/css)
-  - gulp js     (transcribes ts to js and moves result to public/js)  
-  - gulp build    (builds and attempts to open index in default browser)
+  - tsc         
+    - (if you set up typescript global)
+  - gulp css    
+    - (generates and drops css into public/css)
+  - gulp js     
+    - (transcribes ts to js and moves result to public/js)  
+  - gulp build    
+    - (builds and attempts to open index in default browser)
   - read gulpfile for other tasks
 
 ### Known Issues and Future
