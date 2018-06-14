@@ -20,16 +20,19 @@
 - git clone ...simpleshop.git
 - cd simpleshop/bin
 - npm install
+  - webpack
+  - npm start
 
 ### Goals
 To provide the basics for:
-- simple shop view select frames using simple Session tracking
+- Simple shop view select frames, with simple Sessions sessionStorage tracking mechanism
+- Flux data and event flow
 - sass
   - sass provides a basic grid, variables, and mix-ins
   - create stable responsive UI
 - typescript
   - provides strong typing and interfaces
-  - shopping data structure has been typed in root interface.d
+  - shopping data structure have been typed in the root interface.d
 - webpack
   - webpack provide a typescript to js rule
   - webpack-server to assist in fast build
@@ -45,6 +48,7 @@ To provide the basics for:
 ### Command lines
   - gulp build
     - (generates and drops css into public/css)
+  - webpack
   - npm start
   - read gulpfile for other tasks
 
@@ -57,8 +61,10 @@ To provide the basics for:
       - [lodash](https://nodesecurity.io/advisories/577)
   - exploring removal of babel dependencies for implementing a cleaner es6+ implementation
 
-### other considerations
+### Other considerations
   - jest has been setup for building main library validations
   - jest with puppet can be implemented for UI testing, though at this stage that is not yet implemented
-  - typescript provide incremental improves in code stability as with each refinement of the interfaces things become harder to break with each dev cycle
+  - typescript provides incremental improvements in code stability, with each refinement of the interfaces and things become harder to break with each dev cycle
   - next steps would include finishing out the unit tests setups and implementing a full solution for submission of work as stories in a continuous build context
+  - other add ons are for both visited items review, and a shopping cart. These have the wiring in place but have yet to get an UI treatment
+  - hand jesture based zooming in the expanded view
