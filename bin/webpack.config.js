@@ -16,7 +16,7 @@ module.exports = {
       path.resolve('./ts'),
       path.resolve('./node_modules'),
     ],
-    extensions: [ '.tsx','.ts','.js' ],
+    extensions: [ '.tsx','.ts','.js'],
   },
   output: {
     // devtoolLineToLine: true,
