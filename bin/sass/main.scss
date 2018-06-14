@@ -1,4 +1,10 @@
 @import 'vars/var';
 @import 'vars/mixes';
-@import 'partials/main';
-@import 'partials/grid';
+
+@import 'common/icons';
+@import 'common/main';
+@import 'common/grid';
+@import 'common/animate';
+
+@import 'component/shopping';
+@import 'component/displaybox';

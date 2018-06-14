@@ -2,18 +2,21 @@
   "compilerOptions": {
     "module": "es6",
     "target": "es5",
+    "moduleResolution": "node",
     "preserveConstEnums": true,
     "outDir": "js/",
-    "baseUrl": "",
+    "baseUrl": "ts",
+    "jsx": "react",
     "watch": false,
     "allowJs": true,
     "sourceMap": true
   },
   "files" : [
-    "ts/app.ts",
+    "ts/app.tsx",
   ],
   "filesGlob":[
-    "**/*.ts"
+    "**/*.ts",
+    "**/*.tsx"
   ],
   "lib":[
     "es6",
@@ -22,7 +25,6 @@
   ],
   "exclude":[
     "vendor",
-    "ts"
   ],
   "include" : [
     "ts/**/*",

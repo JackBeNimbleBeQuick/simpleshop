@@ -25,3 +25,31 @@
   position: relative;
   top: 5px;
 }
+@mixin fadedBG($color,$opacity){
+	background-color: rgba($color,$color,$color,$opacity);
+}
+
+@mixin transforms($type,$x,$y) {
+	transform: $type($x, $y);
+	-webkit-transform: $type($x, $y); /* Safari */
+	-ms-transform: $type($x, $y); /* IE 9 */
+}
+
+@mixin binaryAnimation($s_attrib,$s_value,$e_attrib,$e_value){
+	@-webkit-keyframes binaryAnimation{
+	 $s_attrib:$s_value;
+	 $e_attrib:$e_value;
+	}
+	@-moz-keyframes binaryAnimation {
+	 $s_attrib:$s_value;
+	 $e_attrib:$e_value;
+	}
+	@-o-keyframes binaryAnimation{
+	 $s_attrib:$s_value;
+	 $e_attrib:$e_value;
+	}
+	@keyframes binaryAnimation {
+	 $s_attrib:$s_value;
+	 $e_attrib:$e_value;
+	}
+}

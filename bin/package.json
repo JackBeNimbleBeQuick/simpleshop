@@ -1,16 +1,29 @@
 {
-  "name": "tsResponsivePackKickstart",
+  "name": "simpleshop",
   "version": "0.0.1",
-  "description": "Kickstarter for responsive, typescript based setup with webpack delivery",
+  "description": "simple shop example using react",
   "main": "js/app.js",
-  "dependencies": {},
+  "dependencies": {
+    "@types/flux": "^3.1.7",
+    "@types/immutable": "^3.8.7",
+    "@types/react": "^16.3.16",
+    "@types/react-dom": "^16.0.5",
+    "flux": "^3.1.3",
+    "immutable": "^3.8.2",
+    "react": "^16.4.0",
+    "react-dom": "^16.4.0"
+  },
   "devDependencies": {
     "@babel/core": "^7.0.0-beta.46",
     "@babel/register": "^7.0.0-beta.46",
+    "@types/es6-shim": "^0.31.37",
+    "@types/node": "^10.3.0",
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-register": "^6.26.0",
     "child_process": "^1.0.2",
+    "csstype": "^2.5.3",
+    "express": "^4.16.3",
     "fs": "0.0.1-security",
     "glob": "^7.1.2",
     "gulp": "github:gulpjs/gulp#4.0",
@@ -22,6 +35,7 @@
     "gulp-typescript": "^4.0.2",
     "gulp-uglify": "^3.0.0",
     "hoek": "^4.2.1",
+    "jest": "^23.1.0",
     "jshint": "^2.9.5",
     "node-sass": "^4.9.0",
     "path": "^0.12.7",
@@ -29,29 +43,32 @@
     "rx": "^4.1.0",
     "script-loader": "^0.7.2",
     "shelljs": "^0.8.2",
+    "ts-jest": "^22.4.6",
     "ts-loader": "^4.3.0",
     "typescript": "^2.8.3",
+    "util": "^0.10.3",
     "webpack": "^4.8.3",
     "webpack-cli": "^2.1.3",
+    "webpack-serve": "^1.0.2",
     "webpack-stream": "^4.0.3"
   },
-  "scripts": {},
+  "directories": {
+    "src": "ts/src",
+    "ts": "ts",
+    "test": "tests"
+  },
+  "scripts": {
+    "start": "node serve.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/JackBeNimbleBeQuick/tsResponsivePackKickstart.git"
+    "url": "git+https://github.com/JackBeNimbleBeQuick/simpleshop.git"
   },
-  "keywords": [
-    "SASS Quick Kick Start",
-    "Typescript Qucik Kick Start",
-    "Quick",
-    "Kick",
-    "Start",
-    "Kit"
-  ],
+  "keywords": [],
   "author": "Jack Harrison",
   "license": "CC-BY-4.0",
   "bugs": {
-    "url": "https://github.com/JackBeNimbleBeQuick/tsResponsivePackKickstart/issues"
+    "url": "https://github.com/JackBeNimbleBeQuick/simpleshop/issues"
   },
-  "homepage": "https://github.com/JackBeNimbleBeQuick/tsResponsivePackKickstart#readme"
+  "homepage": "https://github.com/JackBeNimbleBeQuick/simpleshop#readme"
 }

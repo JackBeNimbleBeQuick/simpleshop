@@ -1,6 +1,3 @@
-@import 'vars/var';
-@import 'vars/mixes';
-@import 'partials/main';
 
 [class*=col-]:before{
   display: table;
@@ -18,16 +15,6 @@
 }
 [class*=visible-]{
   display: none;
-}
-[class*=push-] {
-  position: relative;
-  float: none;;
-  left: inherit;;
-}
-[class*=pull-] {
-  position: relative;
-  float: none;;
-  right: inherit;;
 }
 .show-all{
   [class*=hide-] {
@@ -52,64 +39,14 @@
       display: block;
       visibility: visible;
     }
-    .framing.pulling .visible-#{$size}{
-      border: 1px solid;
-      border-radius: 5px;
-      padding: 5px;
-    }
     [class*=hide-#{$size}] {
       display: none;
       visibility: hidden;
-    }
-    [class*=push-#{$size}-] {
-      position: relative;
-      float: left;
-    }
-    [class*=push-#{$size}-]:before,
-    [class*=push-#{$size}-]:after {
-      clear: both;
-    }
-    [class*=pull-#{$size}-] {
-      position: relative;
-      float: right;
-    }
-    [class*=pull-#{$size}-]:before,
-    [class*=pull-#{$size}-]:after {
-      clear: right;
-    }
-    [class*=offset-#{$size}-] {
-      position: relative;
-      clear: both;
-    }
-
-    @for $i from 1 through $grid-columns{
-      .pull-#{$size}-#{$i} {
-        right: percentage($i / $grid-columns);
-      }
-    }
-    @for $i from 1 through $grid-columns{
-      .push-#{$size}-#{$i} {
-        left: percentage($i / $grid-columns);
-      }
-    }
-    @for $i from 1 through $grid-columns{
-      .offset-#{$size}-#{$i} {
-        margin-left: percentage($i / $grid-columns);
-      }
     }
   }
 }
 @each $size, $width in $grids{
 
-  @media (max-width: #{$width}px){
-    .banner{
-      &.main{
-        h1{
-          font-size: unquote((2*( $width / $max-size))+'em');
-        }
-      }
-    }
-  }
   @media (max-width: #{$width}px){
 
     @each $align in $alignments{

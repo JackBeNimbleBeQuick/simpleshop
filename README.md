@@ -1,13 +1,11 @@
 # Project Title
-> Typescript, SASS, Webpack kick starter, providing the TUC pattern
-* gulp 4: we might as well start using this stuff now ... right?
-  - requires some gulp 4 environmental stuff which may change soon ( gulp 4 is still in Alpha so keep you eyes open 8^)
-  - gulp 4 es6 still has babel dependencies: I will be exploring whether this can be replaced with typescript as I find that to be cleaner
+> Simple Shopping App ...
 
 * responsive sass build that supports custom grid settings
 * typescript implementation:  
-  - this provides very bare bones setup for lib that does nothing much
-* webpack:  
+* webpack development:  
+* Rreact:  
+* Flux: with simple Sessions Handling and Connector Ajax
 
 
 ## Getting Started
@@ -19,35 +17,35 @@
 
 ...
 - mkdir myWebProject
-- git clone ...tsResponsivePackKickstart.git
-- cd tsResponsivePackKickstart/bin
+- git clone ...simpleshop.git
+- cd simpleshop/bin
 - npm install
 
 ### Goals
 To provide the basics for:
+- simple shop view select frames using simple Session tracking
 - sass
   - sass provides a basic grid, variables, and mix-ins
+  - create stable responsive UI
 - typescript
-  - typescript is just the setup for getting started
+  - provides strong typing and interfaces
+  - shopping data structure has been typed in root interface.d
 - webpack
-  - webpak provide a typescript to js rule
+  - webpack provide a typescript to js rule
+  - webpack-server to assist in fast build
 
 ### Sass Files
 - _main.scss:_ gathers the files used in compiling and provides the basic grid setup
-- _partials/\_grid:_ is just that
-- _partials/\_main:_ is start of project / namespaced styles for your project and can | should be replaced
+- _common/\_grid:_ is just that
+- _component/\_main:_ is start of project / name-spaced styles for your project and can | should be replaced
+  - component styles are maintain in /sass for faster dev at any time they can be moved into the component to support reuse
 - _vars/\_var:\_ hold the grid setup, you may want to clean this to support your color theming scheme
 - _vars/\_mixes:\_ some sample mix-ins are provided
 
 ### Command lines
-  - tsc         
-    - (if you set up typescript global)
-  - gulp css    
+  - gulp build
     - (generates and drops css into public/css)
-  - gulp js     
-    - (transcribes ts to js and moves result to public/js)  
-  - gulp build    
-    - (builds and attempts to open index in default browser)
+  - npm start
   - read gulpfile for other tasks
 
 ### Known Issues and Future
@@ -59,6 +57,8 @@ To provide the basics for:
       - [lodash](https://nodesecurity.io/advisories/577)
   - exploring removal of babel dependencies for implementing a cleaner es6+ implementation
 
-
-#### Thanks for coming to the game, do not forget your bobble heads as you head for the gates
-  - It does amaze me that even in a little ditty such as this ... how much node from all sorts of mostly unknown sources gets inserted to the mix... 8^) breath deep and enjoy the view... and do not step on the snakes.... they really for some reason do not like that...
+### other considerations
+  - jest has been setup for building main library validations
+  - jest with puppet can be implemented for UI testing, though at this stage that is not yet implemented
+  - typescript provide incremental improves in code stability as with each refinement of the interfaces things become harder to break with each dev cycle
+  - next steps would include finishing out the unit tests setups and implementing a full solution for submission of work as stories in a continuous build context

@@ -135,6 +135,12 @@ let runjs = (done) => {
 
 }
 
+let watchSass = (done) => {
+  gulp.watch([
+      sources.styles
+  ]).on('change', ()=>{ gulp.series([css])(done)});
+}
+
 /**
  * use js task and open in broser
  * @param  {Function} done
@@ -142,7 +148,6 @@ let runjs = (done) => {
  */
 let runcss = (done) => {
   return gulp.series([css, open])(done);
-
 }
 
 /**
@@ -151,12 +156,13 @@ let runcss = (done) => {
  * @return done()
  */
 let build = (done) => {
-  return gulp.series([transpile, css, moveJs, open, clean])(done);
+  return gulp.series([css])(done);
 }
 
 export {
   js,
   css,
+  watchSass,
   moveJs,
   transpile,
   build,
