@@ -1,10 +1,10 @@
 # Project Title
 > Simple Shopping App ...
 
-* responsive sass build that supports custom grid settings
+* Responsive sass build that supports custom grid settings
 * typescript implementation:  
-* webpack development:  
-* Rreact:  
+* Webpack used in development:  
+* React:  
 * Flux: with simple Sessions Handling and Connector Ajax
 
 
