@@ -12,7 +12,7 @@
     "sourceMap": true
   },
   "files" : [
-    "ts/app.tsx",
+    "ts/AppContainer.tsx",
   ],
   "filesGlob":[
     "**/*.ts",
