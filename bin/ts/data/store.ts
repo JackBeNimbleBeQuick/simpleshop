@@ -11,6 +11,7 @@ import {Session} from 'com/Session';
 export class Store extends ReduceStore<any, any>{
   session:Session;
   lastAction:any;
+  initReducer:any;
 
   constructor() {
     super(Dispatcher);
@@ -38,15 +39,21 @@ export class Store extends ReduceStore<any, any>{
     switch(action.type){
       case Types.RESET_TRACKING:
 
-        if(state.type == Types.SESSION_TRACKING)
-          state.data = {};
+        if(state.type == Types.SESSION_TRACKING){
+          console.log(this.getInitialState);
+          alert(`resetting state`);
+          return this.getInitialState();
+        }
 
         return state;
+
       case Types.GET_DATA:
         this.session.add('state', {[action.type]:action} );
         Tracker.buildProductList();
         return action;
       case Types.SESSION_TRACKING:
+
+        // return action;
       case Types.SET_VIEWED:
         reduced = true;
         break;

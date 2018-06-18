@@ -88,7 +88,8 @@ export class Session implements Session{
 
     let new_l = {}
     for(let i in list){
-      new_l[i] = list[i];
+      if(i !== Types.SESSION_TRACKING)
+        new_l[i] = list[i];
     }
 
     this.storage().setItem('state', JSON.stringify(new_l));
@@ -174,17 +175,6 @@ export class Session implements Session{
   }
 
   /**
-   * Internal method for loggedIn
-   * .where the implementation details live
-   * @type {[type]}
-   */
-  private logged = (session: SessionData) => {
-    let login = this.retrieve('login');
-    if(login && login.logged_in) return login.logged_in;
-    return false;
-  }
-
-  /**
    * Hydrate the service config object lazy boy style
    * @return {any}
    */
@@ -192,6 +182,15 @@ export class Session implements Session{
     if(this.config) return this.config;
     this.config = Config.getServices();
     return this.config;
+  }
+
+  /**
+   * always returns the object stored or empty object;
+   * @type {Object}
+   */
+  public retrieveObject = (key:string) => {
+    let find = this.retrieve(key);
+    return find===null ? {} : find;
   }
 
   /**
@@ -219,6 +218,19 @@ export class Session implements Session{
     }
   }
 
+  /** PRIVATE METHODS **/
+
+  /**
+   * Internal method for loggedIn
+   * .where the implementation details live
+   * @type {[type]}
+   */
+  private logged = (session: SessionData) => {
+    let login = this.retrieve('login');
+    if(login && login.logged_in) return login.logged_in;
+    return false;
+  }
+
   /**
    * Wrapper for login storage
    * @type {SessionData}
@@ -237,16 +249,6 @@ export class Session implements Session{
       return window.sessionStorage;
     }
     throw Error('this device / browser is not supportind sessionStorage ~8^[');
-  }
-
-  /**
-   * always returns the object stored or empty object;
-   * @type {Object}
-   */
-  public retrieveObject = (key:string) => {
-    let find = this.retrieve(key);
-    return find===null ? {} : find;
-
   }
 
   /**

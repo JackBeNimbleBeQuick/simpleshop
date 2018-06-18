@@ -27,8 +27,6 @@ export class FluxMethods{
       let last  = Store.getLastAction();
 
       console.log(`catch for; store: ${params.store_key} value: ${params.value_key}`);
-      // console.log(last);
-      // console.log(store);
 
       if( store[params.store_key] ){
         let keyStore = store[params.store_key];
@@ -46,5 +44,21 @@ export class FluxMethods{
     if(matches[0]) return matches[0];
     return null;
   }
+
+  /**
+   * Provide current state by type is that type exists or
+   * return the whole state object
+   * @return {Store.reduce.state}
+   */
+  public getState = (type?:string) => {
+    let state = Store.getState();
+
+    /* If there is a Types.type then return that state or empty object*/
+    if(Types[type]){
+      return  state[type] && state[type].data ?  state[type].data : {};
+    }
+    return state;
+  }
+
 }
 export default new FluxMethods();

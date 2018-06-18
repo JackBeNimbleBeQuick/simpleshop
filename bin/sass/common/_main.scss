@@ -13,6 +13,11 @@ ul{
     }
   }
 }
+input{
+  background-color:transparent;
+  border: none;
+  outline: none; 
+}
 .image-wrap{
   animation-name: fader;
   animation-duration: 2s;

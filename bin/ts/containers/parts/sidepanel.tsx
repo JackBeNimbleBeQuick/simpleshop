@@ -7,6 +7,7 @@ import Image from 'component/image';
 import FluxMethods from 'util/fluxmethods';
 import Tracker from 'data/tracker';
 import Types from 'data/types';
+import Store from 'data/store';
 import {Session} from 'com/Session';
 
 export class SidePanel extends React.Component<any,any>{
@@ -42,23 +43,14 @@ export class SidePanel extends React.Component<any,any>{
    * @return {void} there is async method to setState
    */
   componentDidMount(){
-
+    console.log('SidePanel did mount:');
     //@NOTE using a single method for accessing values from
     // data store listeners...
     FluxMethods.catchStoreChanges({
-      store_key: 'SESSION_TRACKING',
+      store_key: Types.SESSION_TRACKING,
       callback: (prods:products) => {
-        if(! prods) return false;
-        console.log(prods);
-        let last_seen = {};
-        if(prods && prods.selected){
-          last_seen = prods.selected;
-          delete prods.selected;
-        }
-        this.setState({
-          last_seen: last_seen,
-          history:  prods ? prods : {}
-        });
+        if(!prods) return false;
+        this.filterProdListAndSetState(prods);
       }
     });
 
@@ -66,9 +58,42 @@ export class SidePanel extends React.Component<any,any>{
       this.setState({aspect: window.outerWidth/window.outerHeight});
     });
 
+    console.log('SidePanel getting initial state');
+    console.log(FluxMethods.getState(Types.SESSION_TRACKING));
+
+    this.filterProdListAndSetState(FluxMethods.getState(Types.SESSION_TRACKING));
+
   }
 
+  /**
+   * Provides clean history for both init state and changes on state
+   * @param  {products} prods
+   * @return {stateChange}
+   */
+  filterProdListAndSetState = (prods:products) => {
+    let last_seen = {};
 
+    if(prods && prods.selected){
+      last_seen = prods.selected;
+      delete prods.selected;
+      return this.setState({
+        last_seen: last_seen,
+        history:  prods ? prods : {}
+      });
+    }
+
+    return this.setState({
+      history:  prods ? prods : {}
+    });
+
+  }
+
+  /**
+   * Open state of tab / panel
+   * @param  {any} e really not used in this context
+   * @return {void}
+   * results in toggling the open state of panel
+   */
   open = (e:any) => {
     console.log(e);
     this.setState({
@@ -76,6 +101,7 @@ export class SidePanel extends React.Component<any,any>{
     });
   }
 
+  /** Stubs for future functionality START**/
   selectLast = (e:any) => {
     console.log(e);
 
@@ -88,13 +114,19 @@ export class SidePanel extends React.Component<any,any>{
   selectFromShoping = (e:any) => {
     console.log(e);
   }
+  /** Stubs for future functionality END**/
 
   clearHistory = (e:any) => {
     console.log(e);
+    //@NOTE clears the data store that then provides the
+    //@NOTE Reset action for ReduceStore for app state
     this.state.session.clearTracking();
+
+    console.log('Is the Tracking removed in store?');
+    console.log(Store.getState());
+
     this.setState({
       history: {},
-      // last_seen: {},
     });
   }
 
