@@ -1,4 +1,8 @@
 
+/** expander component part styles
+@TODO provide build reference tagging for packageing compile styles into
+each component to maintain full component architecture
+**/
 .bg-block{
   @include fadedBG(0, .8);
   animation-name: fader;
@@ -38,10 +42,9 @@
       }
     }
   }
-
   .presentation-box{
-    height: 75%;
-    margin: 0 12.5%;
+    // height: 75%;
+    margin: 0 8%;
     overflow: hidden;
     position: relative;
     top: 12.5%;
@@ -68,10 +71,10 @@
         }
         .indicate{
           &:after{
+            bottom: 2pt;
             color: #fff;
             font-size: 1.3em;
             margin: 5pt;
-            top: 2pt;
             position: absolute;
             opacity: .8;
           }
@@ -92,6 +95,9 @@
       text-align: center;
       z-index:1;
       ul{
+        border: 1pt solid $grey;
+        border-radius: 3pt;
+        margin: 0 4pt;
         position: fixed;
         li{
           border: transparent 1pt solid;

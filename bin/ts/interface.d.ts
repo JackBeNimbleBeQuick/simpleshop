@@ -43,7 +43,7 @@ interface product{
   swatches: swatches,
   hero: image,
   thumbnail: image,
-  images: images,
+  images: Array<image>,
 }
 
 /* links*/
@@ -61,10 +61,6 @@ interface imageRoles{
   hero:image, //large
   tumbnaile: image, //small
   images: Array<image>, //small
-}
-
-interface images{
-  [Identifier:number]:Array<image>
 }
 
 interface image{

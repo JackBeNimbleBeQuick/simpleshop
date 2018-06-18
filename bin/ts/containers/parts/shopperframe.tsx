@@ -19,6 +19,7 @@ class ShopperFrame extends React.Component<any, any>{
       thumbnail: {},
       images: [],
     },
+    heading: null,
     expander: ()=>{alert('Hey do not forget to override me 8^)')},
     currencySymbol: "$",
     icons: {
@@ -55,7 +56,7 @@ class ShopperFrame extends React.Component<any, any>{
         </span>
       </div>
     );
-    
+
   }
 
   renderFlags = () => {
@@ -79,8 +80,14 @@ class ShopperFrame extends React.Component<any, any>{
   }
 
   render(){
+    let heading = null;
+    if(this.props.heading){
+      heading =
+      <h4>{this.props.heading}</h4>
+    }
     return(
       <div className="frame col-lg-4 col-sm-12">
+        {heading}
         <div className="panel left">
           <Image
             product = {this.props.product}

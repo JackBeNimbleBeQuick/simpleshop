@@ -1,5 +1,7 @@
 /// <reference path="../com.interface.d.ts"/>
 import Config from './Coms.config';
+import Actions from 'data/actions';
+import Types from 'data/types';
 import {Connected} from './Connected';
 
 export class Session implements Session{
@@ -75,6 +77,26 @@ export class Session implements Session{
   }
 
   /**
+   * Clear a state item from history
+   * @param  {string} key
+   * @return {void}
+   */
+  clearTracking = () => {
+    let list = this.retrieve('state');
+
+    delete list[Types.SESSION_TRACKING];
+
+    let new_l = {}
+    for(let i in list){
+      new_l[i] = list[i];
+    }
+
+    this.storage().setItem('state', JSON.stringify(new_l));
+
+    return Actions['reset']( {} );
+  }
+
+  /**
    * push on to stack of items
    * @type {[type]}
    * we always have an array or nothing in this use case
@@ -90,6 +112,42 @@ export class Session implements Session{
     this.storage().setItem(key, JSON.stringify(value));
   }
 
+  /**
+   * adds to anything that is existing within that key
+   * @type {key: string, value: any}
+   */
+  public add = (key:string ,value:any) => {
+    let isPrimative = /\b(string|number)\b/.test(typeof value);
+
+    let existing = this.retrieve(key);
+    let data = value;
+
+    if(existing && typeof value == 'object'){
+      let subkey = Object.keys(value)[0];
+      existing[subkey] = data[subkey];
+      data = existing;
+    }
+
+    this.storage().setItem(key,
+      isPrimative ? value: JSON.stringify(data)
+    );
+  }
+
+  /**
+   * for flux pattern we want a method that caches data with out registering
+   * action call
+   * Use case:
+   *  .generate reference stores like indexed products list.
+   *  .overwrites any existing key value ~8^}
+   *
+   * @type {any}
+   */
+  public store = (key:string ,value:any) => {
+    let isPrimative = /\b(string|number)\b/.test(typeof value);
+    this.storage().setItem(key,
+      isPrimative ? value: JSON.stringify(value)
+    );
+  }
 
   /**
    * provides for tracking various arbitrary interactions of a site
@@ -98,9 +156,12 @@ export class Session implements Session{
    */
   public trackItem = (key:string, body:any) => {
     let isPrimative = /\b(string|number)\b/.test(typeof body);
+
     this.storage().setItem(key,
       isPrimative ? body : JSON.stringify(body)
     );
+
+    return Actions['sessionTracking'](this.retrieve(key));
   }
 
   /**

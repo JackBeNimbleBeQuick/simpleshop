@@ -1,6 +1,9 @@
+///<reference path="../../interface.d.ts" />
 import * as React from 'react';
 import Closer from 'component/closer';
 import Image from 'component/image';
+import DomUtils from 'util/dom';
+import FluxMethods from 'util/fluxmethods';
 
 class DisplayBox extends React.Component <any, any > {
 
@@ -15,16 +18,74 @@ class DisplayBox extends React.Component <any, any > {
   constructor(props:any){
     super(props);
     this.state = {
-      pointer: 0
+      aspect: window.outerWidth / window.outerHeight,
+      product: this.props.product,
+      images: this.props.images,
+      alt: this.props.alt,
+      pointer: 0,
+      expanded: false
     }
   }
 
+  /**
+   * By using listener on store, this component becomes stateful
+   * this means that we carry any properties from defaultProps to state
+   *** Stateful Component means:
+   *   a) it is not pure
+   *   b) render valuees are now drawn from state instead of props
+   *
+   * @return {void} there is async method to setState
+   */
+  componentDidMount(){
+
+    //@NOTE using a single method for accessing values from
+    // data store listeners...
+    FluxMethods.catchStoreChanges({
+      store_key: 'SESSION_TRACKING',
+      value_key: 'selected',
+      callback: (prod:product) => {
+        if(! prod) return false;
+        this.setState({
+          pointer: 0,
+          expanded: true,
+          product: prod,
+          images: this.images(prod),
+        });
+      }
+    });
+
+    window.addEventListener('resize', (e)=>{
+      this.setState({aspect: window.outerWidth/window.outerHeight});
+    });
+
+  }
+
+  /**
+   * Closes out the overlay
+   * @return {void}
+   */
+  closeExpander = () => {
+    //util class for DOM related activities
+    DomUtils.unLockScroll();
+
+    // re: render with expanded = false will result in
+    // .null DisplayBox
+    this.setState({
+      expanded: false,
+    });
+  }
+
+  /**
+   * Changes current slide based on direction
+   * @param  {string} dir
+   * @return {void} results in setState() re-render
+   */
   changeSlide = (dir) => {
-    // console.log(dir);
     let point = this.state.pointer;
-    let len   = this.props.images.length;
+    let len   = this.state.images.length;
 
     switch(dir){
+
       case 'left':
         point = point-1 > -1
           ? point-1 : len-1;
@@ -39,12 +100,37 @@ class DisplayBox extends React.Component <any, any > {
     this.setState({pointer:  point});
   }
 
+  /**
+   * Supports selecting from images marque
+   * @param  {number} slide
+   *  setState results with re render using new pointer index
+   */
   slideSelect = (slide) => {
     this.setState({pointer:  slide});
   }
 
+  /**
+   * we need to put hero image on top of marque
+   * safest way to do this is to provide new array with it on top
+   * @return {[type]} [description]
+   */
+  images = (prod:product) => {
+    //product images we create new Array so as to avoid
+    // this.product.images.unshift will polute data that should stay immutable
+    let images = [];
+    prod.images.map( (image,key)=>{
+      images.push(image);
+    });
+    images.unshift(prod.hero);
+    return images;
+  }
+
+  /**
+   * Render Marque of all images for easy selection
+   * @return {[type]} [description]
+   */
   renderImagePanel = () =>{
-    let list = this.props.images.map((image,i)=>{
+    let list = this.state.images.map((image,i)=>{
 
       let classes = ['sidebar', i==this.state.pointer ? 'selected' : ''];
 
@@ -52,7 +138,7 @@ class DisplayBox extends React.Component <any, any > {
         <li className={classes.join(' ')} key={i}>
           <Image
             image = {image}
-            alt = {this.props.alt}
+            alt = {this.state.product.name}
             handler= { this.slideSelect.bind(this,i)}
           />
         </li>
@@ -66,17 +152,25 @@ class DisplayBox extends React.Component <any, any > {
     );
   }
 
+  /**
+   * Render the DisplayBox Sub View
+   * . only renders if expand == true
+   *
+   * @return {HTMLElement|null}
+   */
   render() {
 
-    let zone = 'main';
+    if(! this.state.expanded) return null;
+
+    let style = DomUtils.rebox('75%', .0001);
 
     return(
         <div className="bg-block" >
           <Closer
             open={true}
-            handler={this.props.closer}
+            handler={this.closeExpander}
           />
-          <div className="presentation-box">
+          <div className="presentation-box" style={style} >
 
             <div className="view" >
 
@@ -85,8 +179,8 @@ class DisplayBox extends React.Component <any, any > {
               </span>
 
               <Image
-                image = {this.props.images[this.state.pointer]}
-                alt = {this.props.product.name}
+                image = {this.state.images[this.state.pointer]}
+                alt = {this.state.product.name}
                 handler = { this.changeSlide.bind(this,'main')}
               />
 
