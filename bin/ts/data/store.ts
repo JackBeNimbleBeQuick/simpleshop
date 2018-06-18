@@ -41,7 +41,6 @@ export class Store extends ReduceStore<any, any>{
 
         if(state.type == Types.SESSION_TRACKING){
           console.log(this.getInitialState);
-          alert(`resetting state`);
           return this.getInitialState();
         }
 
