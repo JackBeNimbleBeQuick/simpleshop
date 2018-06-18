@@ -18,7 +18,7 @@ export class Tracker{
   }
 
   public viewedItem = (visited:product) => {
-    this.add('viewed', visited);
+    this.add(Types.SESSION_TRACKING, visited);
   }
 
   public addToCart = (selected:product) => {
@@ -46,7 +46,6 @@ export class Tracker{
 
   /**
    * Returns the product of key or null
-   * .if no
    * @param  {id:string}
    * @return {product:null}
    */
