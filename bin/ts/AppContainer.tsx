@@ -17,7 +17,6 @@ export let AppContainer = Container.create(class extends React.Component<any, an
   }
 
   //@NOTE it is still not clear how these shapes can be accessed
-  //
   static calculateState(prevState: any, props: any): any{
     let sc = Store.getState();
 

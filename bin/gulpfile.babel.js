@@ -17,17 +17,22 @@ import fs      from "fs";
 import sh      from 'shelljs';
 import ps      from 'child_process';
 
+import wp_conf from './webpack.config';
+
 let exec = ps.exec;
 
 
-import webpack from 'webpack-stream';
+// import webpack from 'webpack-stream';
+import webpack from 'webpack';
 
 let tsProject  = ts.createProject("tsconfig.json");
 let actions = [];
 
 let sources = {
   styles:  `sass/**/*.scss`,
-  scripts: `ts/**/*.ts`
+  scripts: `ts/**/*.ts`,
+  webpack_start: `${__dirname}/ts/index.tsx`,
+  webpack_end: `${__dirname}/public/js/app.js`,
 };
 
 let targets = {
@@ -60,21 +65,6 @@ let css = () => gulp.src('sass/**/*.scss')
   .pipe(gulp.dest('../public/css'));
 
 /**
- * Webpack and move transpiled files to public
- * @param  {Function} fn just the gulp env function in case you need to return it 8^) ?
- * @return {Gulp} task
- */
-let moveJs = (done) => {
-  console.log('Moving transpiled js to public');
-  return gulp.src('js/**/*.js')
-    .pipe(webpack({
-      output: {
-        filename: 'app.js'
-      }
-    })).pipe(gulp.dest('../public/js'));
-}
-
-/**
  * TS transpile step of a build
  * @param  {Function} done
  * @return {tsProject.result}
@@ -100,13 +90,13 @@ let transpile = (done) => {
 let open = (done) => {
   let err = {};
   if (process.platform == 'darwin') {
-    exec(('open '.concat(targets.index)), (err, stdout, stderr) => {
+    exec((`open -a Google\\ Chrome http://localhost:8093`), (err, stdout, stderr) => {
         if (stdout != "") console.log(stdout);
         if (stderr != "") console.log(stderr);
         return done(err);
     });
   } else {
-    exec(('start '.concat(targets.index)), (err, stdout, stderr) => {
+    exec((`start chrome "https://localhost:8093"`), (err, stdout, stderr) => {
         if (stdout != "") console.log(stdout);
         if (stderr != "") console.log(stderr);
         return done(err);
@@ -116,23 +106,40 @@ let open = (done) => {
 }
 
 /**
- * Series of js tasks that result in new webpack build
- * in public/js
- * @param  {Function} done
- * @return done()
+ * Webpack files to public
+ * @param  {Function} fn just the gulp env function in case you need to return it 8^) ?
+ * @return {Gulp} task
  */
-let js = (done) => {
-  return gulp.series([transpile, moveJs, clean])(done);
+let compile = (done) => {
+  console.log(`\n\nwebpack taking from: ${sources.webpack_start}`);
+  console.log(`webpack putting to: ${sources.webpack_end}`);
+  exec('webpack', (err, stdo, sterr)=>{
+    console.log('\n\nList of files being compiled');
+    console.log(stdo);
+    console.log(sterr);
+    return done(err);
+  });
 }
 
 /**
- * use js task and open in broser
+ * Run wepack server
  * @param  {Function} done
- * @return {Function}
+ * @return {void}
  */
-let runjs = (done) => {
-  return gulp.series([transpile, moveJs, open, clean])(done);
+let serveWP = (done) => {
+  console.log(`\n\nRunning webpack-serve`);
 
+  setTimeout( ()=>{
+    console.log(`\nWait for it... this takes a minute 8^)`);
+   } ,1000 );
+
+  exec('npm start', (err, stdo, sterr)=>{
+    console.log(stdo);
+    console.log(sterr);
+
+    console.log('\n {control} c to stop server...')
+    return done(err);
+  });
 }
 
 let watchSass = (done) => {
@@ -142,32 +149,21 @@ let watchSass = (done) => {
 }
 
 /**
- * use js task and open in broser
- * @param  {Function} done
- * @return {Function}
- */
-let runcss = (done) => {
-  return gulp.series([css, open])(done);
-}
-
-/**
  * Does full build
  * @param  {Function} done
  * @return done()
  */
 let build = (done) => {
-  return gulp.series([css])(done);
+  return gulp.series([css, compile, open, serveWP])(done);
 }
 
 export {
-  js,
   css,
+  open,
+  compile,
+  serveWP,
   watchSass,
-  moveJs,
   transpile,
   build,
   clean,
-  open,
-  runjs,
-  runcss,
 }

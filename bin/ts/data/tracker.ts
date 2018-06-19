@@ -88,11 +88,9 @@ export class Tracker{
     }
 
     //store with out action call on type
-    // this.session.store(Types.CURRENT_ITEM,ref);
     Actions['setViewed'](ref);
 
     //store with action call on type
-    // this.session.trackItem(key,{[id]:item});
     Actions['sessionTracking']({[id]:item});
 
 

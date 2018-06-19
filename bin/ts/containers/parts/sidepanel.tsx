@@ -126,13 +126,10 @@ export class SidePanel extends React.Component<any,any>{
   /** Stubs for future functionality END**/
 
   clearHistory = (e:any) => {
-    console.log(e);
+    // console.log(e);
     //@NOTE clears the data store that then provides the
     //@NOTE Reset action for ReduceStore for app state
     this.state.session.clearTracking();
-
-    console.log('Is the Tracking removed in store?');
-    console.log(Store.getState());
 
     this.setState({
       history: {},
@@ -140,7 +137,7 @@ export class SidePanel extends React.Component<any,any>{
   }
 
   renderHistory = () => {
-    console.log(this.state.history);
+    // console.log(this.state.history);
     let prodKeys = this.state.history ? Object.keys(this.state.history) : [];
     if(prodKeys.length){
       let history = prodKeys.map((index, i)=>{

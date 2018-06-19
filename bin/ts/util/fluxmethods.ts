@@ -1,7 +1,7 @@
 ///<reference path="../interface.d.ts" />
 import DomUtils from 'util/dom';
 import Store from 'data/store';
-import Types from 'data/Types';
+import Types from 'data/types';
 
 //@NOTE these interfaces are made explicit here while flushing out
 //@NOTE the validity of this approach

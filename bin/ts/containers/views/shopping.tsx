@@ -86,7 +86,7 @@ class Shopping extends React.Component<any, any>{
 
   renderList = () =>{
     let list;
-    console.log(this.state);
+    // console.log(this.state);
     if(this.state.list && this.state.didLoad){
       list = this.state.list.groups.map((product,i)=>{
         return(
