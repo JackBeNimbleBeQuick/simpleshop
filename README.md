@@ -37,8 +37,8 @@ To provide the basics for:
   - provides strong typing and interfaces
   - shopping data structure have been typed in the root interface.d
 - webpack
-  - webpack provide a typescript to js rule
-  - webpack-server to assist in fast build
+  - webpack provides a typescript to js rule
+  - webpack-server is used to run the local site
 
 ### Sass Files
 - _main.scss:_ gathers the files used in compiling and provides the basic grid setup
