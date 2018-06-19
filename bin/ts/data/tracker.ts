@@ -31,6 +31,7 @@ export class Tracker{
    * called as part of store.reduce when service was called
    * @param {null}
    * @return {void}
+   * @TODO Create Actions.products wthif PRODUCTS type and move this into Reduce/Store
    */
   public buildProductList = () => {
     let state = this.session.retrieve('state');
@@ -49,6 +50,7 @@ export class Tracker{
    * Returns the product of key or null
    * @param  {id:string}
    * @return {product:null}
+   * @TODO Create Actions.findProduct with FIND_PRODUCT type and move this into Reduce/Store
    */
   public findProduct = (id:string) => {
     let products = this.session.retrieve(Types.PRODUCTS);
@@ -58,6 +60,13 @@ export class Tracker{
     return null;
   }
 
+
+  /**
+   * Removes individaul items from store
+   * @param  type [description]
+   * @return      [description]
+   * @TODO Create Actions.removeProduct with REMOVE_PRODUCT type and move this into Reduce/Store
+   */
   public remove = (type:string ,id:string) => {
     let items:any|null = this.session.retrieve(type);
 

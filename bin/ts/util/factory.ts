@@ -1,6 +1,7 @@
 export class Factory{
     /**
      * React-like createElement function so we can use JSX in our TypeScript/JavaScript code.
+     * Barrowing from others to gain insight to the JSX -> Factory use case
      */
     public createElement (tag: string, attrs: any, children: any): HTMLElement {
         var element: HTMLElement = document.createElement(tag);

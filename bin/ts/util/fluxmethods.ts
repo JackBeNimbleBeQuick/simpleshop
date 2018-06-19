@@ -4,7 +4,7 @@ import Store from 'data/store';
 import Types from 'data/types';
 
 //@NOTE these interfaces are made explicit here while flushing out
-//@NOTE the validity of this approach
+// ...the validity of this approach
 interface flux_store{
   store_key:string,
   value_key?:string,
@@ -46,7 +46,7 @@ export class FluxMethods{
   }
 
   /**
-   * Provide current state by type is that type exists or
+   * Provide current state by type if that type exists or
    * return the whole state object
    * @return {Store.reduce.state}
    */

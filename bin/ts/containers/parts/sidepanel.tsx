@@ -141,6 +141,8 @@ export class SidePanel extends React.Component<any,any>{
     let prodKeys = this.state.history ? Object.keys(this.state.history) : [];
     if(prodKeys.length){
       let history = prodKeys.map((index, i)=>{
+        
+        //@TODO create Actions.findProduct with FIND_PRODUCT type and move to Store/Reduce
         let prod = Tracker.findProduct(index);
         return (
           <ul className="row product" key={i}>

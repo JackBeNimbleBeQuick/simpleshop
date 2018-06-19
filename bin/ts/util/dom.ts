@@ -1,5 +1,11 @@
 ///<reference path="../dom.interface.d.ts" />
 
+/**
+ * Provides central set of methods for dom based activities
+ * so as to keep things DRY and reusable over time
+ * @param  DomUtils.isBrowser
+ * @return
+ */
 export class DomUtils{
 
   //@NOTE good idea but does not work in unit test... yet 8^)

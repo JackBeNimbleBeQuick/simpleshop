@@ -76,6 +76,7 @@ class Shopping extends React.Component<any, any>{
   expand = (product:product) => {
     DomUtils.lockScroll();
 
+    //@TODO create Actions.setViewd with SET_VIEWED type and move to Store/Reduce
     Tracker.viewedItem(product);
 
     this.setState({

@@ -8,6 +8,11 @@ import Types from 'data/types'
 import SidePanel from 'containers/parts/sidepanel';
 import {Container} from 'flux/utils';
 
+/**
+ * Redux container consumes React Component and provides basic linkage to
+ * the Action -> Dispatch -> ReduceStore cycle
+ * @type {React.Component}
+ */
 export let AppContainer = Container.create(class extends React.Component<any, any> {
 
   static getStores() {
@@ -16,17 +21,10 @@ export let AppContainer = Container.create(class extends React.Component<any, an
       ]
   }
 
-  //@NOTE it is still not clear how these shapes can be accessed
+  //@NOTE Really does nothing at this point other than provides
+  //@NOTE example of what withProps.
   static calculateState(prevState: any, props: any): any{
     let sc = Store.getState();
-
-
-    console.log('prevState')
-      console.log(prevState);
-    console.log('props')
-      console.log(props);
-    console.log('stored')
-      console.log(sc);
 
     if(sc){
 
@@ -41,7 +39,6 @@ export let AppContainer = Container.create(class extends React.Component<any, an
       if( sc['viewed'])
         shapes['view'] = sc['viewed'].data;
 
-      console.log('filtered shapes: ');
       console.log(shapes);
 
       return shapes;
@@ -60,8 +57,7 @@ export let AppContainer = Container.create(class extends React.Component<any, an
     return (
       <div className="page">
         <Shopping/>
-        <SidePanel
-        />
+        <SidePanel/>
         <DisplayBox/>
       </div>
     );

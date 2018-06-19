@@ -57,7 +57,7 @@ To provide the basics for:
 
 ### Known Issues and Future
   - npm audit discoveries are now being worked through.
-    - gulp-sass has known security dependencies:
+    - gulp-sass has known security dependencies
       - [stringstream](https://nodesecurity.io/advisories/664)
       - [hoek](https://nodesecurity.io/advisories/566)
       - [tunnel-agent](https://nodesecurity.io/advisories/598)
@@ -65,9 +65,11 @@ To provide the basics for:
   - exploring removal of babel dependencies for implementing a cleaner es6+ implementation
 
 ### Other considerations
-  - jest has been setup for building main library validations
-  - jest with puppet can be implemented for UI testing, though at this stage that is not yet implemented
-  - typescript provides incremental improvements in code stability, with each refinement of the interfaces and things become harder to break with each dev cycle
+  - jest has been setup for building main library validations some example test have been created
+  - jest with puppet can be implemented for UI testing with jest-image-snapshot for UI validations
+    - in examining these: snapshots / chromium browser automations can be very build environment specific
+    :. those are not provided in this repo and left to the actual build / test continuous build environments
+  - typescript provides incremental improvements in code stability, with each refinement of the interfaces, things become harder to break with each dev cycle, which is one of the main reasons this repo start to establish and es6+ dev approach
   - next steps would include finishing out the unit tests setups and implementing a full solution for submission of work as stories in a continuous build context
-  - other add ons are for both visited items review, and a shopping cart. These have the wiring in place but have yet to get an UI treatment
-  - hand jesture based zooming in the expanded view
+  - other visited items review is implemented lightly to explore Session base interactions can be store at local client side
+  - it would be appropriate to add hand jesture based zooming in the expanded view
