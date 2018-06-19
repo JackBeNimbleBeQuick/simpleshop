@@ -19,9 +19,16 @@ const Actions = {
     });
   },
 
-  setViewd: (data) =>{
+  setViewed: (data) =>{
     Dispatcher.dispatch({
-      type: Types.SET_VIEWED,
+      type: Types.CURRENT_ITEM,
+      data,
+    });
+  },
+
+  addToCart: (data) =>{
+    Dispatcher.dispatch({
+      type: Types.PURCHASE_CART,
       data,
     });
   },

@@ -54,6 +54,14 @@ export class SidePanel extends React.Component<any,any>{
       }
     });
 
+    FluxMethods.catchStoreChanges({
+      store_key: Types.CURRENT_ITEM,
+      callback: (prod:product) => {
+        if(!prod) return false;
+        this.setLastViewed(prod);
+      }
+    });
+
     window.addEventListener('resize', (e)=>{
       this.setState({aspect: window.outerWidth/window.outerHeight});
     });
@@ -62,7 +70,13 @@ export class SidePanel extends React.Component<any,any>{
     console.log(FluxMethods.getState(Types.SESSION_TRACKING));
 
     this.filterProdListAndSetState(FluxMethods.getState(Types.SESSION_TRACKING));
+    this.setLastViewed(FluxMethods.getState(Types.CURRENT_ITEM));
 
+  }
+
+  setLastViewed = (prod:product) => {
+    if(prod && prod.id)
+      this.setState({last_seen: prod});
   }
 
   /**
@@ -71,18 +85,9 @@ export class SidePanel extends React.Component<any,any>{
    * @return {stateChange}
    */
   filterProdListAndSetState = (prods:products) => {
-    let last_seen = {};
-
-    if(prods && prods.selected){
-      last_seen = prods.selected;
-      delete prods.selected;
-      return this.setState({
-        last_seen: last_seen,
-        history:  prods ? prods : {}
-      });
-    }
 
     return this.setState({
+      // last_seen: this.state.session.retrieve(Types.CURRENT_ITEM),
       history:  prods ? prods : {}
     });
 
@@ -102,9 +107,13 @@ export class SidePanel extends React.Component<any,any>{
   }
 
   /** Stubs for future functionality START**/
+  search = (e:any) => {
+    e.preventDefault();
+    console.log(e);
+  }
+
   selectLast = (e:any) => {
     console.log(e);
-
   }
 
   selectFromHistory = (e:any) => {
@@ -193,7 +202,7 @@ export class SidePanel extends React.Component<any,any>{
         </span>
         <div className="view">
           <div className="heading">
-            <form>
+            <form onSubmit={e=>{this.search(e)}}>
               <label className="search">
                 <input type="text" name="search" placeholder="find stuff"/>
               </label>

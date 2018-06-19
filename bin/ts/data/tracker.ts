@@ -2,6 +2,7 @@
 import {Session} from 'com/Session';
 import FluxMethods from 'util/fluxmethods';
 import Types from 'data/types';
+import Actions from 'data/actions';
 
 export class Tracker{
 
@@ -86,21 +87,13 @@ export class Tracker{
       count: 1
     }
 
-    //items retrieved
-    let items:any|null = this.session.retrieveObject(key);
+    //store with out action call on type
+    // this.session.store(Types.CURRENT_ITEM,ref);
+    Actions['setViewed'](ref);
 
-    //if it has been accessed already increment count of it
-    if(items[id]){
-      items[id].count += 1;
-    }else{
-      items[id] = item;
-    }
-
-    items['selected'] = ref;
-
-    console.log(items);
-
-    this.session.trackItem(key,items);
+    //store with action call on type
+    // this.session.trackItem(key,{[id]:item});
+    Actions['sessionTracking']({[id]:item});
 
 
   }

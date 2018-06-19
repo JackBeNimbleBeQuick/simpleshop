@@ -8,7 +8,6 @@ import Types from 'data/types'
 import SidePanel from 'containers/parts/sidepanel';
 import {Container} from 'flux/utils';
 
-
 export let AppContainer = Container.create(class extends React.Component<any, any> {
 
   static getStores() {
@@ -21,6 +20,7 @@ export let AppContainer = Container.create(class extends React.Component<any, an
   //
   static calculateState(prevState: any, props: any): any{
     let sc = Store.getState();
+
 
     console.log('prevState')
       console.log(prevState);

@@ -148,6 +148,7 @@ export class Session implements Session{
     this.storage().setItem(key,
       isPrimative ? value: JSON.stringify(value)
     );
+    if(key === 'setViewed') Actions['setViewed'](value);
   }
 
   /**
@@ -155,14 +156,19 @@ export class Session implements Session{
    * @param {key:string, body:any}
    * @return {void}
    */
-  public trackItem = (key:string, body:any) => {
-    let isPrimative = /\b(string|number)\b/.test(typeof body);
+  public trackItem = (key:string, value:any) => {
+    let list     = this.retrieve('state');
+    let data = list[key] ? list[key] : {data:{},type:key};
+    let subkey = Object.keys(value)[0];
 
-    this.storage().setItem(key,
-      isPrimative ? body : JSON.stringify(body)
-    );
+    // data[key]['type'] = key;
+    data['data'][subkey] = value[subkey];
 
-    return Actions['sessionTracking'](this.retrieve(key));
+    list[key] = data;
+
+    this.storage().setItem('state',JSON.stringify(list));
+
+    // return Actions['sessionTracking'](this.retrieve(Types.SESSION_TRACKING));
   }
 
   /**

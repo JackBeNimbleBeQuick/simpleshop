@@ -35,30 +35,35 @@ export class Store extends ReduceStore<any, any>{
     console.log(state);
     console.log(action);
     let reduced = false;
+    this.lastAction = action.type;
 
     switch(action.type){
       case Types.RESET_TRACKING:
 
         if(state.type == Types.SESSION_TRACKING){
-          console.log(this.getInitialState);
           return this.getInitialState();
         }
 
         return state;
 
       case Types.GET_DATA:
+
         this.session.add('state', {[action.type]:action} );
         Tracker.buildProductList();
         return action;
+
       case Types.SESSION_TRACKING:
 
-        // return action;
+        this.session.trackItem(action.type, action.data);
+
+        return action;
+
+      case Types.PURCHASE_CART:
       case Types.SET_VIEWED:
         reduced = true;
         break;
     }
 
-    this.lastAction = action.type;
     if(action) this.session.add('state', {[action.type]:action} );
 
     return reduced ? action : state;

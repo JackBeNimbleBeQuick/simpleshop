@@ -41,8 +41,7 @@ class DisplayBox extends React.Component <any, any > {
     //@NOTE using a single method for accessing values from
     // data store listeners...
     FluxMethods.catchStoreChanges({
-      store_key: 'SESSION_TRACKING',
-      value_key: 'selected',
+      store_key: 'CURRENT_ITEM',
       callback: (prod:product) => {
         if(! prod) return false;
         this.setState({

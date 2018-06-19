@@ -28,7 +28,7 @@ export class FluxMethods{
 
       console.log(`catch for; store: ${params.store_key} value: ${params.value_key}`);
 
-      if( store[params.store_key] ){
+      if( last != 'RESET_TRACKING' && store[params.store_key] ){
         let keyStore = store[params.store_key];
         // console.log(keyStore);
         let data = keyStore.data;
