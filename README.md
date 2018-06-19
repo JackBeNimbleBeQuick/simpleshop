@@ -28,7 +28,7 @@
 
 ### Goals
 To provide the basics for:
-- Simple shop view select frames, with simple Sessions sessionStorage tracking mechanism
+- Simple shop view select frames, with simple sessionStorage tracking mechanism
 - Flux data and event flow
 - sass
   - sass provides a basic grid, variables, and mix-ins
