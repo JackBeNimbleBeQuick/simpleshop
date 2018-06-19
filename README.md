@@ -32,7 +32,7 @@ To provide the basics for:
 - Flux data and event flow
 - sass
   - sass provides a basic grid, variables, and mix-ins
-  - create stable responsive UI
+  - this is used to create a stable responsive UI
 - typescript
   - provides strong typing and interfaces
   - shopping data structure have been typed in the root interface.d
