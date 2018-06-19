@@ -21,7 +21,7 @@
 - cd simpleshop/bin
 - npm install
 - npm install webpack-cli -g
-  - (webpack-stream does not work with gulp 4 ** this get replaced later)
+  - (webpack-stream does not work with gulp 4 ** this will be replaced later)
 
 #### Get things started
 -gulp build
