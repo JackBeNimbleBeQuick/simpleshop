@@ -61,3 +61,18 @@ each component to maintain full component architecture
     }
   }
 }
+@media(min-width: 1366px){
+  .shopping{
+    .frame{
+      .panel{
+        font-size: 1.2em;
+        .flags{
+          font-size: 8pt;
+        }
+        .price{
+          font-size: 0.8em;
+        }
+      }
+    }
+  }
+}

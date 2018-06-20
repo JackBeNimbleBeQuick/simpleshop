@@ -7,7 +7,6 @@ import Image from 'component/image';
 import FluxMethods from 'util/fluxmethods';
 import Tracker from 'data/tracker';
 import Types from 'data/types';
-import Store from 'data/store';
 import {Session} from 'com/Session';
 
 export class SidePanel extends React.Component<any,any>{
@@ -141,7 +140,7 @@ export class SidePanel extends React.Component<any,any>{
     let prodKeys = this.state.history ? Object.keys(this.state.history) : [];
     if(prodKeys.length){
       let history = prodKeys.map((index, i)=>{
-        
+
         //@TODO create Actions.findProduct with FIND_PRODUCT type and move to Store/Reduce
         let prod = Tracker.findProduct(index);
         return (
