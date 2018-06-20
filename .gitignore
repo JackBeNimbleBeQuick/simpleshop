@@ -7,5 +7,6 @@ ehthumbs.db
 Thumbs.db
 node_modules/
 bin/js
+bin/coverage
 public/js
 public/css
