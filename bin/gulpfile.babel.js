@@ -17,13 +17,11 @@ import fs      from "fs";
 import sh      from 'shelljs';
 import ps      from 'child_process';
 
+import webpack from 'webpack';
 import wp_conf from './webpack.config';
 
 let exec = ps.exec;
 
-
-// import webpack from 'webpack-stream';
-import webpack from 'webpack';
 
 let tsProject  = ts.createProject("tsconfig.json");
 let actions = [];
@@ -65,23 +63,6 @@ let css = () => gulp.src('sass/**/*.scss')
   .pipe(gulp.dest('../public/css'));
 
 /**
- * TS transpile step of a build
- * @param  {Function} done
- * @return {tsProject.result}
- */
-let transpile = (done) => {
-  console.log('Transpiling ts to js using tsconfig.json');
-  let result = gulp
-    .src(sources.scripts)
-    .pipe(maps.init())
-    .pipe(tsProject());
-
-  return result.js
-    .pipe(maps.write())
-    .pipe(gulp.dest('js'));
-}
-
-/**
  * open into local browser => assumes the default browser is set to handle .html extensions
 
  * @param  {Function}
@@ -113,7 +94,7 @@ let open = (done) => {
 let compile = (done) => {
   console.log(`\n\nwebpack taking from: ${sources.webpack_start}`);
   console.log(`webpack putting to: ${sources.webpack_end}`);
-  exec('webpack', (err, stdo, sterr)=>{
+  exec('npm run-script build', (err, stdo, sterr)=>{
     console.log('\n\nList of files being compiled');
     console.log(stdo);
     console.log(sterr);
@@ -153,17 +134,26 @@ let watchSass = (done) => {
  * @param  {Function} done
  * @return done()
  */
+let restart = (done) => {
+  return gulp.series([open, serveWP])(done);
+}
+
+/**
+ * Does full build
+ * @param  {Function} done
+ * @return done()
+ */
 let build = (done) => {
-  return gulp.series([css, compile, open, serveWP])(done);
+  return gulp.series([css, compile, serveWP])(done);
 }
 
 export {
   css,
   open,
+  restart,
   compile,
   serveWP,
   watchSass,
-  transpile,
   build,
   clean,
 }

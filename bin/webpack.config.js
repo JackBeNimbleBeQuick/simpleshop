@@ -18,6 +18,11 @@ module.exports = {
     ],
     extensions: [ '.tsx','.ts','.js'],
   },
+  devServer: {
+    contentBase: path.join(__dirname, '../public/'),
+    // compress: true,
+    port: 8093
+  },
   output: {
     // devtoolLineToLine: true,
     filename: 'app.js',
