@@ -57,6 +57,7 @@
     "test": "tests"
   },
   "scripts": {
+    "test": "jest",
     "start": "webpack-dev-server --open --mode development",
     "build": "./node_modules/.bin/webpack"
   },
