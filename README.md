@@ -8,16 +8,17 @@
 
 
 ## Getting Started
+
 - run all tasks within bin/
 
 ...
-- mkdir myWebProject
 - git clone ...simpleshop.git
 - cd simpleshop/bin
 - npm install
 - gulp build
 
 ### Goals
+
 To provide the basics for:
 - Simple shop view select frames, with simple sessionStorage tracking mechanism
 - Flux data and event flow
