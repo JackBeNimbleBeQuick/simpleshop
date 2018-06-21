@@ -20,11 +20,7 @@
 - git clone ...simpleshop.git
 - cd simpleshop/bin
 - npm install
-- npm install webpack-cli -g
-  - (webpack-stream does not work with gulp 4 ** this will be replaced later)
-
-#### Get things started
--gulp build
+- gulp build
 
 ### Goals
 To provide the basics for:
@@ -50,9 +46,6 @@ To provide the basics for:
 
 ### Command lines
   - gulp build
-    - (generates and drops css into public/css)
-  - webpack
-  - npm start
   - read gulpfile for other tasks
 
 ### Known Issues and Future
