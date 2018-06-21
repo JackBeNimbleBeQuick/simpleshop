@@ -59,5 +59,5 @@ To provide the basics for:
     :. those are not provided in this repo and left to the actual build / test continuous build environments
   - typescript provides incremental improvements in code stability, with each refinement of the interfaces, things become harder to break with each dev cycle, which is one of the main reasons this repo start to establish and es6+ dev approach
   - next steps would include finishing out the unit tests setups and implementing a full solution for submission of work as stories in a continuous build context
-  - other visited items review is implemented lightly to explore Session base interactions can be store at local client side
+  - a visited items review is implemented in the SidePanel to explore how Session base interactions can be stored at local client side
   - it would be appropriate to add hand jesture based zooming in the expanded view
