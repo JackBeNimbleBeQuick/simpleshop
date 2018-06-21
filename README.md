@@ -1,18 +1,13 @@
 # Project Title
+
 > Simple Shopping App ...
 
-* Responsive sass build that supports custom grid settings
-* typescript implementation:  
-* Webpack used in development:  
-* React:  
-* Flux: with simple Sessions Handling and Connector Ajax
+* Typescript implementation:  
+* React / Flux  / Responsive Sass ** no style frameworks
+* Simple Sessions Handling and Connector for Ajax
 
 
 ## Getting Started
-- Follow gulp4 setup: [Gulp 4 setup may change](https://www.npmjs.com/package/gulp4)
-- may I suggest Node Version Management [npm nvm](https://github.com/creationix/nvm) | [npm nvm-windows](https://github.com/coreybutler/nvm-windows) if you have not done so yet
-  - this package assembled with npm v8.9.4
-- install and setup typescript [ts](https://www.npmjs.com/package/typescript)
 - run all tasks within bin/
 
 ...
@@ -55,7 +50,6 @@ To provide the basics for:
       - [hoek](https://nodesecurity.io/advisories/566)
       - [tunnel-agent](https://nodesecurity.io/advisories/598)
       - [lodash](https://nodesecurity.io/advisories/577)
-  - exploring removal of babel dependencies for implementing a cleaner es6+ implementation
 
 ### Other considerations
   - jest has been setup for building main library validations some example test have been created
