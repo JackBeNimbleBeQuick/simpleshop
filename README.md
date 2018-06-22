@@ -10,6 +10,7 @@
 ## Getting Started
 
 - run all tasks within bin/
+- **built with node 8.9.4
 
 ...
 - git clone ...simpleshop.git
