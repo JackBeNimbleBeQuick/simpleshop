@@ -3,9 +3,11 @@ import * as React from 'react';
 import Closer from 'component/closer';
 import Image from 'component/image';
 import DomUtils from 'util/dom';
-import FluxMethods from 'util/fluxmethods';
+import Store from 'data/store';
 
 class DisplayBox extends React.Component <any, any > {
+
+  windowSnoop:any;
 
   static defaultProps = {
     closer: ()=>{alert('DisplayBox saize: we needs closer hanler ! Dude-8^)')},
@@ -17,6 +19,7 @@ class DisplayBox extends React.Component <any, any > {
 
   constructor(props:any){
     super(props);
+    this.windowSnoop = this.changeDisplay;
     this.state = {
       aspect: window.outerWidth / window.outerHeight,
       product: this.props.product,
@@ -40,23 +43,30 @@ class DisplayBox extends React.Component <any, any > {
 
     //@NOTE using a single method for accessing values from
     // data store listeners...
-    FluxMethods.catchStoreChanges({
+    Store.catchStoreChanges({
+      id: 'currentItem',
       store_key: 'CURRENT_ITEM',
-      callback: (prod:product) => {
-        if(! prod) return false;
-        this.setState({
-          pointer: 0,
-          expanded: true,
-          product: prod,
-          images: this.images(prod),
-        });
-      }
+      callback: this.changeDisplay
     });
 
-    window.addEventListener('resize', (e)=>{
-      this.setState({aspect: window.outerWidth/window.outerHeight});
-    });
+  }
 
+  componentWillUnmount(){
+    window.removeEventListener('resize',this.windowSnoop);
+    Store.releaseStoreChange('currentItem');
+  }
+
+  aspectChange = () => {
+    this.setState({aspect: window.outerWidth/window.outerHeight});
+  }
+
+  changeDisplay = (prod:product) => {
+    this.setState({
+      pointer: 0,
+      expanded: true,
+      product: prod,
+      images: this.images(prod),
+    });
   }
 
   /**

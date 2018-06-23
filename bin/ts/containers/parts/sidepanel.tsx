@@ -4,7 +4,7 @@
 import * as React from 'react';
 import ShopperFrame from 'containers/parts/shopperframe';
 import Image from 'component/image';
-import FluxMethods from 'util/fluxmethods';
+import Store from 'data/store';
 import Tracker from 'data/tracker';
 import Types from 'data/types';
 import {Session} from 'com/Session';
@@ -45,20 +45,16 @@ export class SidePanel extends React.Component<any,any>{
     console.log('SidePanel did mount:');
     //@NOTE using a single method for accessing values from
     // data store listeners...
-    FluxMethods.catchStoreChanges({
+    Store.catchStoreChanges({
+      id: 'sp_lister',
       store_key: Types.SESSION_TRACKING,
-      callback: (prods:products) => {
-        if(!prods) return false;
-        this.filterProdListAndSetState(prods);
-      }
+      callback: this.filterProdListAndSetState
     });
 
-    FluxMethods.catchStoreChanges({
+    Store.catchStoreChanges({
+      id: 'sp_last_viewed',
       store_key: Types.CURRENT_ITEM,
-      callback: (prod:product) => {
-        if(!prod) return false;
-        this.setLastViewed(prod);
-      }
+      callback: this.setLastViewed
     });
 
     window.addEventListener('resize', (e)=>{
@@ -66,11 +62,16 @@ export class SidePanel extends React.Component<any,any>{
     });
 
     console.log('SidePanel getting initial state');
-    console.log(FluxMethods.getState(Types.SESSION_TRACKING));
+    console.log(Store.getByIndex(Types.SESSION_TRACKING));
 
-    this.filterProdListAndSetState(FluxMethods.getState(Types.SESSION_TRACKING));
-    this.setLastViewed(FluxMethods.getState(Types.CURRENT_ITEM));
+    this.filterProdListAndSetState(Store.getByIndex(Types.SESSION_TRACKING));
+    this.setLastViewed(Store.getByIndex(Types.CURRENT_ITEM));
 
+  }
+
+  componentWillUnmount(){
+    Store.releaseStoreChange('sp_lister');
+    Store.releaseStoreChange('sp_last_viewed');
   }
 
   setLastViewed = (prod:product) => {

@@ -1,6 +1,6 @@
 ///<reference path="../interface.d.ts" />
 import {Session} from 'com/Session';
-import FluxMethods from 'util/fluxmethods';
+import Store from 'data/store';
 import Types from 'data/types';
 import Actions from 'data/actions';
 
@@ -39,7 +39,7 @@ export class Tracker{
       let prodArray = state[Types.GET_DATA].data.groups;
       let products = {};
       prodArray.map((prod:product,i)=>{
-        let key = FluxMethods.productKey(prod);
+        let key = Store.productKey(prod);
         if(key && prod) products[key] = prod;
       });
       this.session.store(Types.PRODUCTS, products);
@@ -87,7 +87,7 @@ export class Tracker{
     if( !ref || !ref.name || ! ref.id  ) return;
 
     //if we cannot create product then just return
-    let id = FluxMethods.productKey(ref);
+    let id = Store.productKey(ref);
     if(!id) return;
 
     let item:productPoint = {
@@ -96,7 +96,7 @@ export class Tracker{
       count: 1
     }
 
-    //store with out action call on type
+    //store with action call on type
     Actions['setViewed'](ref);
 
     //store with action call on type

@@ -51,8 +51,6 @@ To provide the basics for:
 ### Command lines
   - gulp build
     - (generates and drops css into public/css)
-  - webpack
-  - npm start
   - read gulpfile for other tasks
 
 ### Known Issues and Future

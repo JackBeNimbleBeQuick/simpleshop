@@ -3,30 +3,37 @@
 import * as React from 'react';
 import Tracker from 'data/tracker';
 import DomUtils from 'util/dom';
-import FluxMethods from 'util/fluxmethods';
+import Store from 'data/store';
 import {Fluxcom} from 'com/Fluxcom';
 
 import ShopperFrame from 'containers/parts/shopperframe';
 
-class Shopping extends React.Component<any, any>{
+export default class Shopping extends React.Component<any, any>{
+
 
   //making things explicit to assist in implementation
-  static defaultProps = {
-    shoppingProps:{
-      categories:[],
-      groups: [],
-      id: 'Waiting',
-      name: 'Updating results',
-      totalPages: 0,
-    },
-  }
+  // static defaultProps = {
+  //   // type: 'ReactElement',
+  //   didLoad: false,
+  //   setList: {},
+  //   listerners: false,
+  //   shoppingProps:{
+  //     categories:[],
+  //     groups: [],
+  //     id: 'Waiting',
+  //     name: 'Updating results',
+  //     totalPages: 0,
+  //   },
+  // }
 
   constructor(props:any){
     super(props);
     this.state = {
-      list:this.props.shoppingProps.groups,
+      setList: this.setList.bind(this),
+      list:this.props.shoppingProps ? this.props.shoppingProps.groups: {},
       didLoad: false,
       connect: new Fluxcom(),
+      storeEvents: {}
     }
   }
 
@@ -45,22 +52,31 @@ class Shopping extends React.Component<any, any>{
 
     //@NOTE using a single method for accessing values from
     // data store listeners...
-    FluxMethods.catchStoreChanges({
+    Store.catchStoreChanges({
+      id: 'shopper_list',
       store_key: 'GET_DATA',
-      callback: (value) => {
-        this.setState({
-          didLoad: true,
-          list: value });
-      }
+      callback: this.setList
     });
 
     console.log('shopping get data call made');
 
+    //@TODO move into actions context
     this.state.connect.send({
       type: 'GET',
       action: 'updatePage',
       uri: 'shop/new/all-new',
     });
+  }
+
+  setList = (value:any) => {
+    this.setState({
+      didLoad: true,
+      list: value
+    });
+  }
+
+  componentWillUnmount () {
+    Store.releaseStoreChange('shopper_list')
   }
 
   select = (e) => {
@@ -111,4 +127,4 @@ class Shopping extends React.Component<any, any>{
   }
 }
 
-export default Shopping;
+// export default Shopping;

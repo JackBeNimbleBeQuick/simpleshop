@@ -1,17 +1,4 @@
 //missing types for tsc
-interface shoppingProps{
- categories: Array<string>,
- groups: Array<products>,
- id: string,
- name: string,
- totalPages:number
-}
-
-interface shoppingState{
-  any: any
-}
-
-//missing types for tsc
 interface productPoint{
   name: string,
   product_id: string,
@@ -122,4 +109,15 @@ interface reviews{
   averageRating:number,
   id:string,            //organic-mini-check-sheet-set-b2465,
   type:string//GROUP_REVIEWS
+}
+
+interface flux_store{
+  id:string,
+  store_key:string,
+  value_key?:string,
+  callback:Function
+}
+
+interface listerns{
+  [Identifier:number]:Function
 }

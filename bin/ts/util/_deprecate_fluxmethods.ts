@@ -11,6 +11,7 @@ interface flux_store{
   callback:Function
 }
 
+//@TODO evaluate whether to move these into Store
 export class FluxMethods{
 
   /**
@@ -22,7 +23,7 @@ export class FluxMethods{
    */
   public catchStoreChanges = ( params:flux_store ) => {
 
-    Store.addListener(()=>{
+    return Store.addListener(()=>{
       let store = Store.getState();
       let last  = Store.getLastAction();
 
@@ -30,7 +31,6 @@ export class FluxMethods{
 
       if( last != 'RESET_TRACKING' && store[params.store_key] ){
         let keyStore = store[params.store_key];
-        // console.log(keyStore);
         let data = keyStore.data;
         if(data && params.value_key && data[params.value_key]) data = data[params.value_key];
         console.log(data);
@@ -38,6 +38,7 @@ export class FluxMethods{
       }
     });
   }
+
 
   public productKey = (prod:product) => {
     let matches = prod.id.match(/[a-z]{1}\d{4}/gi);
