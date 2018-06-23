@@ -1,32 +1,25 @@
 # Project Title
+
 > Simple Shopping App ...
 
-* Responsive sass build that supports custom grid settings
-* typescript implementation:  
-* Webpack used in development:  
-* React:  
-* Flux: with simple Sessions Handling and Connector Ajax
+* Typescript implementation:  
+* React / Flux  / Responsive Sass ** no style frameworks
+* Simple Sessions Handling and Connector for Ajax
 
 
 ## Getting Started
-- Follow gulp4 setup: [Gulp 4 setup may change](https://www.npmjs.com/package/gulp4)
-- may I suggest Node Version Management [npm nvm](https://github.com/creationix/nvm) | [npm nvm-windows](https://github.com/coreybutler/nvm-windows) if you have not done so yet
-  - this package assembled with npm v8.9.4
-- install and setup typescript [ts](https://www.npmjs.com/package/typescript)
+
 - run all tasks within bin/
+- **built with node 8.9.4
 
 ...
-- mkdir myWebProject
 - git clone ...simpleshop.git
 - cd simpleshop/bin
 - npm install
-- npm install webpack-cli -g
-  - (webpack-stream does not work with gulp 4 ** this will be replaced later)
-
-#### Get things started
--gulp build
+- gulp build
 
 ### Goals
+
 To provide the basics for:
 - Simple shop view select frames, with simple sessionStorage tracking mechanism
 - Flux data and event flow
@@ -60,7 +53,6 @@ To provide the basics for:
       - [hoek](https://nodesecurity.io/advisories/566)
       - [tunnel-agent](https://nodesecurity.io/advisories/598)
       - [lodash](https://nodesecurity.io/advisories/577)
-  - exploring removal of babel dependencies for implementing a cleaner es6+ implementation
 
 ### Other considerations
   - jest has been setup for building main library validations some example test have been created
@@ -69,5 +61,5 @@ To provide the basics for:
     :. those are not provided in this repo and left to the actual build / test continuous build environments
   - typescript provides incremental improvements in code stability, with each refinement of the interfaces, things become harder to break with each dev cycle, which is one of the main reasons this repo start to establish and es6+ dev approach
   - next steps would include finishing out the unit tests setups and implementing a full solution for submission of work as stories in a continuous build context
-  - other visited items review is implemented lightly to explore Session base interactions can be store at local client side
+  - a visited items review is implemented in the SidePanel to explore how Session base interactions can be stored at local client side
   - it would be appropriate to add hand jesture based zooming in the expanded view
