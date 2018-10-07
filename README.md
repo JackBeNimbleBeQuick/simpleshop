@@ -3,7 +3,7 @@
 > Simple Shopping App ...
 
 * Typescript implementation:  
-* React / Flux  / Responsive Sass ** no style frameworks
+* React / REDUX  / Responsive Sass ** no style frameworks
 * Simple Sessions Handling and Connector for Ajax
 
 
